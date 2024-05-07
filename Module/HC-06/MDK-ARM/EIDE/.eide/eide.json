@@ -3,12 +3,20 @@
   "type": "ARM",
   "dependenceList": [],
   "srcDirs": [
-    ".eide/deps"
+    ".eide/deps",
+    "../../Core/Inc",
+    "../../Core/Src",
+    "../HardWare"
   ],
   "virtualFolder": {
     "name": "<virtual_root>",
     "files": [],
     "folders": [
+      {
+        "name": "::CMSIS",
+        "files": [],
+        "folders": []
+      },
       {
         "name": "Application",
         "files": [],
@@ -121,10 +129,10 @@
         "name": "HardWare",
         "files": [
           {
-            "path": "../HardWare/OLED.c"
+            "path": "../HardWare/HC_06.c"
           },
           {
-            "path": "../HardWare/OLED.h"
+            "path": "../HardWare/HC_06.h"
           },
           {
             "path": "../HardWare/OLED_Data.c"
@@ -133,17 +141,12 @@
             "path": "../HardWare/OLED_Data.h"
           },
           {
-            "path": "../HardWare/HC_06.c"
+            "path": "../HardWare/OLED.c"
           },
           {
-            "path": "../HardWare/HC_06.h"
+            "path": "../HardWare/OLED.h"
           }
         ],
-        "folders": []
-      },
-      {
-        "name": "::CMSIS",
-        "files": [],
         "folders": []
       }
     ]
@@ -271,19 +274,31 @@
         },
         "options": "null"
       },
-      "uploader": "JLink",
+      "uploader": "STLink",
       "uploadConfig": {
         "bin": "",
-        "baseAddr": "",
-        "cpuInfo": {
-          "vendor": "null",
-          "cpuName": "null"
-        },
-        "proType": 1,
-        "speed": 8000,
+        "proType": "SWD",
+        "resetMode": "default",
+        "runAfterProgram": true,
+        "speed": 4000,
+        "address": "0x8000000",
+        "elFile": "None",
+        "optionBytes": ".eide/hc-06.st.option.bytes.ini",
         "otherCmds": ""
       },
-      "uploadConfigMap": {},
+      "uploadConfigMap": {
+        "JLink": {
+          "bin": "",
+          "baseAddr": "",
+          "cpuInfo": {
+            "vendor": "null",
+            "cpuName": "null"
+          },
+          "proType": 1,
+          "speed": 8000,
+          "otherCmds": ""
+        }
+      },
       "custom_dep": {
         "name": "default",
         "incList": [
