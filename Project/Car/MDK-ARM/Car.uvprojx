@@ -336,7 +336,7 @@
               <MiscControls>--no-multibyte-chars</MiscControls>
               <Define>USE_HAL_DRIVER,STM32F103xB</Define>
               <Undefine></Undefine>
-              <IncludePath>../Core/Inc;../Drivers/STM32F1xx_HAL_Driver/Inc;../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32F1xx/Include;../Drivers/CMSIS/Include;./HardWare</IncludePath>
+              <IncludePath>../Core/Inc;../Drivers/STM32F1xx_HAL_Driver/Inc;../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32F1xx/Include;../Drivers/CMSIS/Include;.\Inc;.\Src</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -713,47 +713,52 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>HardWare</GroupName>
+          <GroupName>Inc</GroupName>
           <Files>
-            <File>
-              <FileName>HC_06.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\HardWare\HC_06.c</FilePath>
-            </File>
             <File>
               <FileName>HC_06.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\HardWare\HC_06.h</FilePath>
-            </File>
-            <File>
-              <FileName>L298N.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\HardWare\L298N.c</FilePath>
+              <FilePath>.\Inc\HC_06.h</FilePath>
             </File>
             <File>
               <FileName>L298N.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\HardWare\L298N.h</FilePath>
-            </File>
-            <File>
-              <FileName>OLED.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\HardWare\OLED.c</FilePath>
+              <FilePath>.\Inc\L298N.h</FilePath>
             </File>
             <File>
               <FileName>OLED.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\HardWare\OLED.h</FilePath>
-            </File>
-            <File>
-              <FileName>OLED_Data.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\HardWare\OLED_Data.c</FilePath>
+              <FilePath>.\Inc\OLED.h</FilePath>
             </File>
             <File>
               <FileName>OLED_Data.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\HardWare\OLED_Data.h</FilePath>
+              <FilePath>.\Inc\OLED_Data.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Src</GroupName>
+          <Files>
+            <File>
+              <FileName>HC_06.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\src\HC_06.c</FilePath>
+            </File>
+            <File>
+              <FileName>L298N.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\src\L298N.c</FilePath>
+            </File>
+            <File>
+              <FileName>OLED.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\src\OLED.c</FilePath>
+            </File>
+            <File>
+              <FileName>OLED_Data.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\src\OLED_Data.c</FilePath>
             </File>
           </Files>
         </Group>
