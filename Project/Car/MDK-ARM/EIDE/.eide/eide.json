@@ -3,7 +3,11 @@
   "type": "ARM",
   "dependenceList": [],
   "srcDirs": [
-    ".eide/deps"
+    ".eide/deps",
+    "../Inc",
+    "../Src",
+    "../../Core/Inc",
+    "../../Core/Src"
   ],
   "virtualFolder": {
     "name": "<virtual_root>",
@@ -124,36 +128,6 @@
             "folders": []
           }
         ]
-      },
-      {
-        "name": "HardWare",
-        "files": [
-          {
-            "path": "../HardWare/HC_06.c"
-          },
-          {
-            "path": "../HardWare/HC_06.h"
-          },
-          {
-            "path": "../HardWare/L298N.c"
-          },
-          {
-            "path": "../HardWare/L298N.h"
-          },
-          {
-            "path": "../HardWare/OLED_Data.c"
-          },
-          {
-            "path": "../HardWare/OLED_Data.h"
-          },
-          {
-            "path": "../HardWare/OLED.c"
-          },
-          {
-            "path": "../HardWare/OLED.h"
-          }
-        ],
-        "folders": []
       }
     ]
   },
