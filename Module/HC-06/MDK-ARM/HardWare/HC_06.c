@@ -16,10 +16,12 @@ void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size)
 		length++;
 		Uart_Receive[length - 1] = Receive_Data[0];
 		
-		if (Receive_Data[0] == 0x0D)
+		if (Receive_Data[0] == 0xFF)
 		{
 			/* 串口接受逻辑处理开始 */
-			
+			OLED_Clear();
+			OLED_Printf (0, 0, 8, "Uart_Receive=%d", Uart_Receive);
+			OLED_Update();
 			/* 串口接受逻辑处理结束 */
 			memset(Uart_Receive, 0, sizeof(Uart_Receive));
 			length = 0;
