@@ -11,9 +11,12 @@
   * @attention		
 	*
 	*	The required HAL header files such as gpio.h are included in main.h
-	*	该文件用到了GPIO、EXTI、TIM，需要在STM32CubeMX中配置开启
+	*	该文件包含GPIO、EXTI、TIM，需要在STM32CubeMX中配置开启
   ******************************************************************************
   */
+
+/* 以下代码需要用于初始化 */
+//HAL_TIM_Base_Start_IT(&htim2);
 
 uint32_t Key_Count;			//检测长按计数
 uint8_t Key_Tim_Flag;		//按键长按标志位

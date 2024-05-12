@@ -15,10 +15,13 @@
   * @attention		
 	*
 	*	The required HAL header files such as gpio.h are included in main.h
-	* 该文件用到了USART、DMA、OLED，需要在STM32CubeMX中配置开启
+	* 该文件包含USART、DMA、OLED，需要在STM32CubeMX中配置开启
 	* OLED需要配置好SCL、SDA为开漏输出进行IIC通信
   ******************************************************************************
   */
+
+/* 以下代码要用于初始化 */
+//HAL_UARTEx_ReceiveToIdle_IT(&huart1, Receive_Data, 1);
 
 uint8_t Receive_Data[2];							//接收数组
 uint8_t Cache_Data[Receive_Num];			//缓存数组
@@ -47,6 +50,5 @@ void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size)
 		}
 	}
 	
-	//以下代码要用于初始化
 	HAL_UARTEx_ReceiveToIdle_IT(&huart1, Receive_Data, 1);
 }

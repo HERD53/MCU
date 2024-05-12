@@ -18,6 +18,8 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "tim.h"
+#include "usart.h"
 #include "gpio.h"
 
 /* Private includes ----------------------------------------------------------*/
@@ -86,14 +88,25 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
+  MX_TIM2_Init();
+  MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
-
+	OLED_Init();
+	HAL_TIM_Base_Start(&htim2);
+	HAL_TIM_IC_Start_IT(&htim2, TIM_CHANNEL_1);
+	HAL_TIM_IC_Start_IT(&htim2, TIM_CHANNEL_2);
+	
+	uint32_t val;
   /* USER CODE END 2 */
-
+	
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+		OLED_Clear();
+		OLED_Printf(0, 0, 8, "val:%d", Ultrasonic_Ranging());
+		OLED_Update();
+		HAL_Delay(100);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

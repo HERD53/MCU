@@ -31,7 +31,12 @@ extern "C" {
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "tim.h"
+#include "gpio.h"
+#include "usart.h"
+#include "HC_SR04.h"
+#include "OLED.h"
+#include "OLED_Data.h"
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/

@@ -11,7 +11,7 @@
   * @attention		
 	*
 	*	The required HAL header files such as gpio.h are included in main.h
-	* 该文件用到了GPIO，需要在STM32CubeMX中配置开启
+	* 该文件包含GPIO，需要在STM32CubeMX中配置开启
   ******************************************************************************
   */
 

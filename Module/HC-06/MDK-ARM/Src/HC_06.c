@@ -15,7 +15,7 @@
   * @attention		
 	*
 	*	The required HAL header files such as gpio.h are included in main.h
-	* 该文件用到了USART、DMA、OLED，需要在STM32CubeMX中配置开启
+	* 该文件包含USART、DMA、OLED，需要在STM32CubeMX中配置开启
 	* OLED需要配置好SCL、SDA为开漏输出进行IIC通信
   ******************************************************************************
   */
