@@ -687,6 +687,11 @@
               <FileType>5</FileType>
               <FilePath>.\Inc\SG90.h</FilePath>
             </File>
+            <File>
+              <FileName>Key.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Inc\Key.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -711,6 +716,11 @@
               <FileName>SG90.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Src\SG90.c</FilePath>
+            </File>
+            <File>
+              <FileName>Key.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Src\Key.c</FilePath>
             </File>
           </Files>
         </Group>

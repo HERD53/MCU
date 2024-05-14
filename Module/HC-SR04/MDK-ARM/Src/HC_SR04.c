@@ -1,5 +1,3 @@
-#include "main.h"
-
 /**
   ******************************************************************************
   * @file         HC_SR04.h
@@ -10,15 +8,24 @@
   * @attention		
 	*
 	*	The required HAL header files such as gpio.h are included in main.h
-	* 该文件包含GPIO、TIM，需要在STM32CubeMX中配置开启
+	* 该文件包含GPIO、TIM\输入捕获，需要在STM32CubeMX中配置开启
   ******************************************************************************
   */
 
-/* 以下代码需要用于初始化 */
+/* Include -------------------------------------------------------------------*/
+#include "main.h"
+#include "HC_SR04.h"
+
+/* Init ----------------------------------------------------------------------*/
 //HAL_TIM_Base_Start(&htim2);
 //HAL_TIM_IC_Start_IT(&htim2, TIM_CHANNEL_1);
 //HAL_TIM_IC_Start_IT(&htim2, TIM_CHANNEL_2);
 
+/* Define --------------------------------------------------------------------*/
+#define GPIOX GPIOA
+#define GPIO_PIN_X GPIO_PIN_1
+
+/* Variables -----------------------------------------------------------------*/
 uint32_t Ultrasonic_Start;
 uint32_t Ultrasonic_Stop;
 

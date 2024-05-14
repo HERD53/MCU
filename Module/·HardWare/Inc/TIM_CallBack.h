@@ -5,11 +5,9 @@
 #include <stdint.h>
 #include "main.h"
 
-/* Private define ------------------------------------------------------------*/
+/* Variables ---------------------------------------------------------*/
 
-/* Private variables ---------------------------------------------------------*/
-
-/* Private function prototypes -----------------------------------------------*/
+/* Function prototypes -----------------------------------------------*/
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim);
 void HAL_TIM_OC_DelayElapsedCallback(TIM_HandleTypeDef *htim);
 void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim);

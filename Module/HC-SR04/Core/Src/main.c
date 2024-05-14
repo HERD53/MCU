@@ -24,6 +24,11 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include "HC_SR04.h"
+#include "SG90.h"
+#include "Key.h"
+#include "OLED.h"
+#include "OLED_Data.h"
 
 /* USER CODE END Includes */
 
@@ -90,23 +95,32 @@ int main(void)
   MX_GPIO_Init();
   MX_TIM2_Init();
   MX_USART1_UART_Init();
+  MX_TIM3_Init();
   /* USER CODE BEGIN 2 */
 	OLED_Init();
 	HAL_TIM_Base_Start(&htim2);
 	HAL_TIM_IC_Start_IT(&htim2, TIM_CHANNEL_1);
 	HAL_TIM_IC_Start_IT(&htim2, TIM_CHANNEL_2);
-	
-	uint32_t val;
+	HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
+	uint32_t angle = 0;
   /* USER CODE END 2 */
-	
+
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-		OLED_Clear();
-		OLED_Printf(0, 0, 8, "val:%d", Ultrasonic_Ranging());
+		
+		if (Ultrasonic_Ranging() < 10)
+		{
+			angle += 90;
+			if (angle == 270) angle = 0;
+			OLED_Printf(0, 0, 8, "Warning");
+		}
+		SteeringEngine_Control(angle);
 		OLED_Update();
 		HAL_Delay(100);
+		OLED_Clear();
+		
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
