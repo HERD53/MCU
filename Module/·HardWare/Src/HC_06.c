@@ -16,11 +16,10 @@
 
 /* Include -------------------------------------------------------------------*/
 #include "main.h"
-#include "HC_06.h"
 #include <string.h>
 
 /* Init ----------------------------------------------------------------------*/
-//HAL_UARTEx_ReceiveToIdle_IT(&huart1, Receive_Data, 1);
+//HAL_UARTEx_ReceiveToIdle_IT(&huartX, Receive_Data, X);
 
 /* Define --------------------------------------------------------------------*/
 #define Receive_Num 64							//缓存数组大小

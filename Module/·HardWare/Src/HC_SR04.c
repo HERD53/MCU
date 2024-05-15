@@ -14,12 +14,9 @@
 
 /* Include -------------------------------------------------------------------*/
 #include "main.h"
-#include "HC_SR04.h"
 
 /* Init ----------------------------------------------------------------------*/
-//HAL_TIM_Base_Start(&htim2);
-//HAL_TIM_IC_Start_IT(&htim2, TIM_CHANNEL_1);
-//HAL_TIM_IC_Start_IT(&htim2, TIM_CHANNEL_2);
+//HAL_TIM_IC_Start_IT(&htimX, TIM_CHANNEL_X);
 
 /* Define --------------------------------------------------------------------*/
 #define GPIOX GPIOA
