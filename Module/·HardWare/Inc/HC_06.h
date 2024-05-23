@@ -9,6 +9,7 @@
 extern uint8_t Receive_Data[2];			//接收数组
 
 /* Function prototypes -------------------------------------------------------*/
+void HC06_Init(void);
 void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size);
 
 #endif

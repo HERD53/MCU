@@ -16,7 +16,10 @@
 #include "main.h"
 
 /* Init ----------------------------------------------------------------------*/
-//HAL_TIM_IC_Start_IT(&htimX, TIM_CHANNEL_X);
+void HCSR04_Init(void)
+{
+	HAL_TIM_IC_Start_IT(&htimX, TIM_CHANNEL_X);
+}
 
 /* Define --------------------------------------------------------------------*/
 #define GPIOX GPIOA

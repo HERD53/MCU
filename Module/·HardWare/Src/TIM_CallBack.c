@@ -16,10 +16,14 @@
 #include "main.h"
 
 /* Init ----------------------------------------------------------------------*/
-//HAL_TIM_Base_Start_IT(&htimX);
-//HAL_TIM_PWM_Start(&htimX, TIM_CHANNEL_X);
-//HAL_TIM_IC_Start_IT(&htimX, TIM_CHANNEL_X);
-//HAL_TIM_OC_Start_IT(&htimX, TIM_CHANNEL_X);
+void Tim_Init(void)
+{
+	/* 按需开启 */
+//	HAL_TIM_Base_Start_IT(&htimX);
+//	HAL_TIM_PWM_Start(&htimX, TIM_CHANNEL_X);
+//	HAL_TIM_IC_Start_IT(&htimX, TIM_CHANNEL_X);
+//	HAL_TIM_OC_Start_IT(&htimX, TIM_CHANNEL_X);
+}
 
 /* Define --------------------------------------------------------------------*/
 

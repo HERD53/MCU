@@ -16,7 +16,10 @@
 #include "main.h"
 
 /* Init ----------------------------------------------------------------------*/
-//HAL_TIM_Base_Start_IT(&htimX);
+void Key_Init(void)
+{
+	HAL_TIM_Base_Start_IT(&htimX);
+}
 
 /* Define --------------------------------------------------------------------*/
 #define GPIOX GPIOB							//GPIOX (X...A,B,C)

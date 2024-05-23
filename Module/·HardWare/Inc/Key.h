@@ -11,6 +11,7 @@ extern uint8_t Key_Flag;
 extern uint8_t angle;
 
 /* Function prototypes -------------------------------------------------------*/
+void Key_Init(void);
 void Key_Detection(void);
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim);
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin);

@@ -8,5 +8,6 @@
 extern uint32_t DirectBeam_Count;
 
 /* Function prototypes -------------------------------------------------------*/
+void DirectBeam_Init(void);
 
 #endif

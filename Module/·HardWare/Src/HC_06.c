@@ -19,7 +19,10 @@
 #include <string.h>
 
 /* Init ----------------------------------------------------------------------*/
-//HAL_UARTEx_ReceiveToIdle_IT(&huartX, Receive_Data, X);
+void HC06_Init(void)
+{
+	HAL_UARTEx_ReceiveToIdle_IT(&huartX, Receive_Data, X);
+}
 
 /* Define --------------------------------------------------------------------*/
 #define Receive_Num 64							//缓存数组大小

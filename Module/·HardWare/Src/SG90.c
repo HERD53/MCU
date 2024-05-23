@@ -16,7 +16,10 @@
 #include "main.h"
 
 /* Init ----------------------------------------------------------------------*/
-//HAL_TIM_PWM_Start(&htimX, TIM_CHANNEL_X);
+void SG90_Init(void)
+{
+	HAL_TIM_PWM_Start(&htimX, TIM_CHANNEL_X);
+}
 
 /* Define --------------------------------------------------------------------*/
 

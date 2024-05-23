@@ -9,6 +9,7 @@
 extern int32_t Rotary_Encoder_Count;
 
 /* Function prototypes -------------------------------------------------------*/
+void Encoder_Init(void);
 uint32_t Encoder_Detection(void);
 void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim);
 

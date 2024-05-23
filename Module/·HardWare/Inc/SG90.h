@@ -7,6 +7,7 @@
 /* Variables -----------------------------------------------------------------*/
 
 /* Function prototypes -------------------------------------------------------*/
+void SG90_Init(void);
 void SteeringEngine_Control(uint8_t Angle);
 
 #endif
