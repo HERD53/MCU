@@ -8,5 +8,6 @@
 
 /* Function prototypes -----------------------------------------------*/
 uint8_t* Infrared_Judge(void);
+uint8_t Track_State(void);
 
 #endif

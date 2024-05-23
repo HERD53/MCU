@@ -64,5 +64,44 @@ uint8_t* Infrared_Judge(void)
 	return Infrared_state;
 }
 
-
-
+/**
+  * @brief  红外寻迹函数
+  * @param  无
+  * @retval	寻迹状态
+  */
+uint8_t Track_State(void)
+{
+	uint8_t* Judge = Infrared_Judge();
+	
+	if (!Judge[2])
+	{
+		if (!Judge[1])
+		{
+			return 'r';
+		}
+		else if (!Judge[3])
+		{
+			return 'l';
+		}
+		else
+		{
+			return 'm';
+		}
+	}
+	else if (Judge[0] && Judge[1] && Judge[1] && Judge[3] && Judge[4])
+	{
+		return 'e';
+	}
+	else if (Judge[0] && Judge[1])
+	{
+		return 'l';
+	}
+	else if (Judge[3] && Judge[4])
+	{
+		return 'r';
+	}
+	else
+	{
+		return 'e';
+	}
+}

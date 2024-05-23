@@ -1,15 +1,16 @@
-#ifndef __HC_SR04_H
-#define __HC_SR04_H
+#ifndef __Motor_Driver_H
+#define __Motor_Driver_H
 
 /* Includes ------------------------------------------------------------------*/
 #include <stdint.h>
-#include "main.h"
 
 /* Variables -----------------------------------------------------------------*/
 
 /* Function prototypes -------------------------------------------------------*/
-uint32_t Ultrasonic_Ranging(void);
-void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim);
-void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim);
+void Car_Init(void);
+void Car_Forward(uint8_t Speed);
+void Car_Backwards(uint8_t Speed);
+void Car_Left(uint8_t Speed);
+void Car_Light(uint8_t Speed);
 
 #endif

@@ -16,10 +16,14 @@
 #include "main.h"
 
 /* Init ----------------------------------------------------------------------*/
-//HAL_TIM_Base_Start_IT(&htimX);
-//HAL_TIM_PWM_Start(&htimX, TIM_CHANNEL_X);
-//HAL_TIM_IC_Start_IT(&htimX, TIM_CHANNEL_X);
-//HAL_TIM_OC_Start_IT(&htimX, TIM_CHANNEL_X);
+void Tim_Init(void)
+{
+	/* 按需开启 */
+//	HAL_TIM_Base_Start_IT(&htimX);
+//	HAL_TIM_PWM_Start(&htimX, TIM_CHANNEL_X);
+//	HAL_TIM_IC_Start_IT(&htimX, TIM_CHANNEL_X);
+//	HAL_TIM_OC_Start_IT(&htimX, TIM_CHANNEL_X);
+}
 
 /* Define --------------------------------------------------------------------*/
 
@@ -30,37 +34,37 @@
   * @param  htim TIM的句柄
   * @retval 无
   */
-void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
-{
-	
-}
+//void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
+//{
+//	
+//}
 
-/**
-  * @brief  TIM 输出比较中断回调函数
-  * @param  htim TIM的句柄
-  * @retval 无
-  */
-void HAL_TIM_OC_DelayElapsedCallback(TIM_HandleTypeDef *htim)
-{
-	
-}
+///**
+//  * @brief  TIM 输出比较中断回调函数
+//  * @param  htim TIM的句柄
+//  * @retval 无
+//  */
+//void HAL_TIM_OC_DelayElapsedCallback(TIM_HandleTypeDef *htim)
+//{
+//	
+//}
 
-/**
-  * @brief  TIM 输入捕获中断回调函数
-  * @param  htim TIM的句柄
-  * @retval 无
-  */
-void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim)
-{
-	
-}
+///**
+//  * @brief  TIM 输入捕获中断回调函数
+//  * @param  htim TIM的句柄
+//  * @retval 无
+//  */
+//void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim)
+//{
+//	
+//}
 
-/**
-  * @brief  TIM PWM中断回调函数
-  * @param  htim TIM的句柄
-  * @retval 无
-  */
-void HAL_TIM_PWM_PulseFinishedCallback(TIM_HandleTypeDef *htim)
-{
-	
-}
+///**
+//  * @brief  TIM PWM中断回调函数
+//  * @param  htim TIM的句柄
+//  * @retval 无
+//  */
+//void HAL_TIM_PWM_PulseFinishedCallback(TIM_HandleTypeDef *htim)
+//{
+//	
+//}

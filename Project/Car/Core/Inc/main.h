@@ -32,13 +32,16 @@ extern "C" {
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "gpio.h"
-
+#include "tim.h"
+#include "usart.h"
 #include "DirectBeam_Infrared.h"
 #include "HC_06.h"
 #include "Infrared_Tracking.h"
 #include "OLED.h"
 #include "OLED_Data.h"
 #include "TIM_CallBack.h"
+#include "Motor_Driver.h"
+#include "PID.h"
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/
