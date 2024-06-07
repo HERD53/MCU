@@ -62,12 +62,29 @@ void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size)
 			}
 			else if (Cache_Data[0] == 'D')
 			{
-				Car_Light(50);
+				Car_Right(50);
 			}
 			else
 			{
 				Car_Forward(0);
 			}
+			
+			if (Cache_Data[0] == '1')
+			{
+				Car_Forward(100);
+				HAL_UART_Transmit(&huart1, "100", 1, 0);
+			}
+			else if (Cache_Data[0] == '2')
+			{
+				Car_Forward(70);
+				HAL_UART_Transmit(&huart1, "70", 1, 0);
+			}
+			else
+			{
+				Car_Forward(0);
+				HAL_UART_Transmit(&huart1, "0", 1, 0);
+			}
+			
 			/* 用户代码结束 */
 			memset(Cache_Data, 0, sizeof(Cache_Data));
 			Cache_Count = 0;

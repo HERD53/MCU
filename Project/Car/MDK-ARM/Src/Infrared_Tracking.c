@@ -3,7 +3,7 @@
   * @file         Lnfrared_Tracking.c
   * @brief        红外寻迹模块
 	*							 This file provides firmware functions to manage the following
-	*							 + 红外寻迹模块的接收
+	*							 + 红 外寻迹模块的接收
   ******************************************************************************
   * @attention		
 	*
@@ -18,12 +18,12 @@
 /* Init ----------------------------------------------------------------------*/
 
 /* Define --------------------------------------------------------------------*/
-#define GPIOX GPIOA						//GPIOX (X...A,B,C)
-#define LEFT_0 GPIO_PIN_0			//左边第一个红外检测模块
-#define LEFT_1 GPIO_PIN_1			//左边第二个红外检测模块
-#define MIDDLE GPIO_PIN_2			//中间红外检测模块
-#define RIGHT_1 GPIO_PIN_3		//右边第二个红外检测模块
-#define RIGHT_0 GPIO_PIN_4		//右边第一个红外检测模块
+#define GPIOX GPIOB						//GPIOX (X...A,B,C)
+#define LEFT_0 GPIO_PIN_9			//左边第一个红外检测模块
+#define LEFT_1 GPIO_PIN_8			//左边第二个红外检测模块
+#define MIDDLE GPIO_PIN_7			//中间红外检测模块
+#define RIGHT_1 GPIO_PIN_6		//右边第二个红外检测模块
+#define RIGHT_0 GPIO_PIN_5		//右边第一个红外检测模块
 
 /* Variables -----------------------------------------------------------------*/
 uint8_t Infrared_state[5];		//存储红外模块的状态
@@ -72,6 +72,11 @@ uint8_t* Infrared_Judge(void)
 uint8_t Track_State(void)
 {
 	uint8_t* Judge = Infrared_Judge();
+	
+	if (!Judge[0] && !Judge[1] && !Judge[1] && !Judge[3] && !Judge[4])
+	{
+		return 'e';
+	}
 	
 	if (!Judge[2])
 	{

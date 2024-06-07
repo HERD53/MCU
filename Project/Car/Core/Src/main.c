@@ -56,6 +56,33 @@ void SystemClock_Config(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+/* 寻迹 */
+void Trailing(void)
+{
+		uint8_t State = Track_State();
+		
+		if (State == 'l')
+		{
+			Car_Right(50);
+		}
+		else if (State == 'r')
+		{
+			Car_Left(50);
+		}
+		else
+		{
+			Car_Forward(100);
+		}
+}
+/* SPEED */
+void Velocity_Measurement(void)
+{
+	OLED_Printf(0, 0, 8, "AngleSpeed:%4.1f", Angle_Speed);
+	OLED_Printf(0, 16, 8, "Speed:%4.1f", Speed);
+	OLED_Printf(0, 32, 8, "Count:%4d", DirectBeam_Count);
+	OLED_Update();
+	
+}
 
 /* USER CODE END 0 */
 
@@ -91,19 +118,20 @@ int main(void)
   MX_TIM2_Init();
   MX_TIM3_Init();
   MX_USART1_UART_Init();
+  MX_TIM1_Init();
   /* USER CODE BEGIN 2 */
 	OLED_Init();
 	Car_Init();
 	HC06_Init();
-	
+	DirectBeam_Init();
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-		//搞编码器测速
-		
+//		Trailing();
+		Velocity_Measurement();
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

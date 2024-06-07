@@ -92,28 +92,24 @@ int main(void)
   MX_I2C2_Init();
   /* USER CODE BEGIN 2 */
 	OLED_Init();
-  /* USER CODE END 2 */
-
+	MPU6050_Init(0xD0);
+	uint8_t ID;
+	Sensor_I2C2_Read(0xD0, 0x75, &ID, 1);
+	/* USER CODE END 2 */
+	
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-	int ret = 0;
-	float pitch, roll, yaw;
-	do
-	{
-		ret = MPU6050_DMP_init();
-		OLED_Printf(0, 0, 8, "Init ret=%d", ret);
-		OLED_Update();
-	} while (ret);
+	
   while (1)
   {
-		if (MPU6050_DMP_Get_Date(&pitch, &roll, &yaw) == 0)
-		{
-			OLED_Printf(0, 16, 8, "pitch = %f", pitch);
-			OLED_Printf(0, 32, 8, "roll = %f", roll);
-			OLED_Printf(0, 64, 8, "yaw = %f", yaw);
-			OLED_Update();
-		}
-		
+		MPU6050_Read_Accel();
+		MPU6050_Read_Gyro();
+		OLED_Printf(0, 0, 8, "ID:%d", ID);
+		OLED_Printf(0, 16, 8, "AX:%4.1f GX:%4.1f", MPU6050_Data.Accel_X, MPU6050_Data.Gyro_X);
+		OLED_Printf(0, 32, 8, "AY:%4.1f GY:%4.1f", MPU6050_Data.Accel_Y, MPU6050_Data.Gyro_Y);
+		OLED_Printf(0, 48, 8, "AZ:%4.1f GZ:%4.1f", MPU6050_Data.Accel_Z, MPU6050_Data.Gyro_Z);
+		OLED_Update();
+		HAL_Delay(100);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

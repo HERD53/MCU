@@ -46,6 +46,7 @@ void Car_Init(void)
 
 /* Variables -----------------------------------------------------------------*/
 
+//最低速为40
 void Car_Forward(uint8_t Speed)
 {
 	//左前轮
@@ -94,7 +95,7 @@ void Car_Left(uint8_t Speed)
 	__HAL_TIM_SetCompare(&htim3, TIM_CHANNEL_1, 0);
 }
 
-void Car_Light(uint8_t Speed)
+void Car_Right(uint8_t Speed)
 {
 	//左前轮
 	__HAL_TIM_SetCompare(&htim2, TIM_CHANNEL_3, Speed);

@@ -5,7 +5,9 @@
 #include <stdint.h>
 
 /* Variables -----------------------------------------------------------------*/
-extern uint32_t DirectBeam_Count;
+extern uint16_t DirectBeam_Count;
+extern float Angle_Speed;
+extern float Speed;
 
 /* Function prototypes -------------------------------------------------------*/
 void DirectBeam_Init(void);

@@ -18,12 +18,6 @@
 #include "main.h"
 #include <string.h>
 
-/* Init ----------------------------------------------------------------------*/
-void HC06_Init(void)
-{
-	HAL_UARTEx_ReceiveToIdle_IT(&huartX, Receive_Data, X);
-}
-
 /* Define --------------------------------------------------------------------*/
 #define Receive_Num 64							//缓存数组大小
 
@@ -31,6 +25,12 @@ void HC06_Init(void)
 uint8_t Receive_Data[2];							//接收数组
 uint8_t Cache_Data[Receive_Num];			//缓存数组
 uint32_t Cache_Count;									//缓存计数
+
+/* Init ----------------------------------------------------------------------*/
+void HC06_Init(void)
+{
+	HAL_UARTEx_ReceiveToIdle_IT(&huartX, Receive_Data, 1);
+}
 
 /**
   * @brief  串口中断函数的回调函数

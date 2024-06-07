@@ -18,13 +18,16 @@
 /* Init ----------------------------------------------------------------------*/
 void DirectBeam_Init(void)
 {
-//	HAL_TIM_IC_Start_IT(&htimX, TIM_CHANNEL_X);
+	HAL_TIM_Base_Start_IT(&htim1);
+	HAL_TIM_IC_Start_IT(&htim1, TIM_CHANNEL_1);
 }
 
 /* Define --------------------------------------------------------------------*/
 
 /* Variables -----------------------------------------------------------------*/
-uint32_t DirectBeam_Count;
+uint16_t DirectBeam_Count;
+float Angle_Speed;
+float Speed;
 
 /**
   * @brief  TIM 输入捕获中断回调函数
@@ -33,8 +36,23 @@ uint32_t DirectBeam_Count;
   */
 void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim)
 {
-	if (htim == &htim2)
+	if (htim == &htim1)
 	{
 		DirectBeam_Count++;
+	}
+}
+
+/**
+  * @brief  TIM 满计数中断回调函数
+  * @param  htim TIM的句柄
+  * @retval 无
+  */
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
+{
+	if (htim == &htim1)
+	{
+		Angle_Speed = 18 * DirectBeam_Count * 0.017;		//Angle_Speed = rad / T(s)
+		DirectBeam_Count = 0;
+		Speed = Angle_Speed * 6.6;		//Speed = Angle_Speed * R(cm)
 	}
 }
