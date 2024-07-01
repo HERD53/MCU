@@ -32,7 +32,7 @@ int8_t key;
 /* Init ----------------------------------------------------------------------*/
 void HC06_Init(void)
 {
-	HAL_UARTEx_ReceiveToIdle_IT(&huart1, Receive_Data, 1);
+	HAL_UARTEx_ReceiveToIdle_IT(&huart3, Receive_Data, 1);
 }
 
 /**
@@ -43,7 +43,7 @@ void HC06_Init(void)
   */
 void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size)
 {
-	if (huart == &huart1)		//防止其他串口触发
+	if (huart == &huart3)		//防止其他串口触发
 	{
 		Cache_Data[Cache_Count] = Receive_Data[0];
 		Cache_Count++;
@@ -60,5 +60,5 @@ void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size)
 		}
 	}
 	
-	HAL_UARTEx_ReceiveToIdle_IT(&huart1, Receive_Data, 1);
+	HAL_UARTEx_ReceiveToIdle_IT(&huart3, Receive_Data, 1);
 }

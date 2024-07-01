@@ -90,9 +90,9 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
-  MX_USART1_UART_Init();
   MX_USB_DEVICE_Init();
-  MX_TIM2_Init();
+  MX_TIM1_Init();
+  MX_USART3_UART_Init();
   /* USER CODE BEGIN 2 */
 	OLED_Init();
 	HC06_Init();
@@ -117,7 +117,6 @@ int main(void)
   while (1)
   {
 		Encoder_Detection();
-		
 		OLED_Printf(0, 0, 8, "Count: %-5d", Rotary_Encoder_Count);
 		OLED_Printf(0, 16, 8, "Degree: %-5d", Degree);
 		OLED_Update();
@@ -125,7 +124,7 @@ int main(void)
 		mouseHID.x = Degree;
 		mouseHID.y = 0;
 		
-		while (USBD_HID_SendReport(&hUsbDeviceFS, (uint8_t*)&mouseHID, sizeof(mouseHID_t)));
+//		while (USBD_HID_SendReport(&hUsbDeviceFS, (uint8_t*)&mouseHID, sizeof(mouseHID_t)));
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
