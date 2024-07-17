@@ -31,6 +31,15 @@ extern "C" {
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include "tim.h"
+#include "usart.h"
+#include "gpio.h"
+#include "HC_06.h"
+#include "Infrared_Tracking.h"
+#include "OLED.h"
+#include "OLED_Data.h"
+#include "Rotary_Encoder.h"
+#include "TIM_CallBack.h"
 
 /* USER CODE END Includes */
 
@@ -75,6 +84,8 @@ void Error_Handler(void);
 #define Encoder_3_GPIO_Port GPIOB
 #define Encoder_4_Pin GPIO_PIN_1
 #define Encoder_4_GPIO_Port GPIOB
+#define OLED_SDA_Pin GPIO_PIN_11
+#define OLED_SDA_GPIO_Port GPIOB
 #define BIN2_2_Pin GPIO_PIN_12
 #define BIN2_2_GPIO_Port GPIOB
 #define BIN1_2_Pin GPIO_PIN_13

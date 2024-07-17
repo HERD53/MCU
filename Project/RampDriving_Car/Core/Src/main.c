@@ -18,7 +18,6 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-#include "i2c.h"
 #include "tim.h"
 #include "usart.h"
 #include "gpio.h"
@@ -91,16 +90,17 @@ int main(void)
   MX_GPIO_Init();
   MX_TIM2_Init();
   MX_TIM3_Init();
-  MX_I2C2_Init();
   MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
-
+	OLED_Init();
+	
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+		
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

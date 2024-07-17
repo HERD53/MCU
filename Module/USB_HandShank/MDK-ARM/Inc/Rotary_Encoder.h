@@ -15,3 +15,4 @@ uint32_t Encoder_Detection(void);
 void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim);
 
 #endif
+
