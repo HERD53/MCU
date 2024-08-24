@@ -40,6 +40,7 @@ extern "C" {
 #include "OLED_Data.h"
 #include "Rotary_Encoder.h"
 #include "TIM_CallBack.h"
+#include "TB6612.h"
 
 /* USER CODE END Includes */
 

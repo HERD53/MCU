@@ -1,0 +1,28 @@
+--cpu Cortex-M3
+"tft_screen\startup_stm32f103xb.o"
+"tft_screen\main.o"
+"tft_screen\gpio.o"
+"tft_screen\usart.o"
+"tft_screen\stm32f1xx_it.o"
+"tft_screen\stm32f1xx_hal_msp.o"
+"tft_screen\stm32f1xx_hal_gpio_ex.o"
+"tft_screen\stm32f1xx_hal_tim.o"
+"tft_screen\stm32f1xx_hal_tim_ex.o"
+"tft_screen\stm32f1xx_hal_uart.o"
+"tft_screen\stm32f1xx_hal.o"
+"tft_screen\stm32f1xx_hal_rcc.o"
+"tft_screen\stm32f1xx_hal_rcc_ex.o"
+"tft_screen\stm32f1xx_hal_gpio.o"
+"tft_screen\stm32f1xx_hal_dma.o"
+"tft_screen\stm32f1xx_hal_cortex.o"
+"tft_screen\stm32f1xx_hal_pwr.o"
+"tft_screen\stm32f1xx_hal_flash.o"
+"tft_screen\stm32f1xx_hal_flash_ex.o"
+"tft_screen\stm32f1xx_hal_exti.o"
+"tft_screen\system_stm32f1xx.o"
+"tft_screen\tft.o"
+"tft_screen\uart.o"
+--strict --scatter "TFT_Screen\TFT_Screen.sct"
+--summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list "TFT_Screen.map" -o TFT_Screen\TFT_Screen.axf

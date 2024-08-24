@@ -522,11 +522,6 @@
               <FilePath>.\Inc\Infrared_Tracking.h</FilePath>
             </File>
             <File>
-              <FileName>Key.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Inc\Key.h</FilePath>
-            </File>
-            <File>
               <FileName>OLED.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Inc\OLED.h</FilePath>
@@ -547,9 +542,14 @@
               <FilePath>.\Inc\TIM_CallBack.h</FilePath>
             </File>
             <File>
-              <FileName>Buzzer.h</FileName>
+              <FileName>TB6612.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\Inc\Buzzer.h</FilePath>
+              <FilePath>.\Inc\TB6612.h</FilePath>
+            </File>
+            <File>
+              <FileName>MPU6050.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Inc\MPU6050.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -565,11 +565,6 @@
               <FileName>Infrared_Tracking.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Src\Infrared_Tracking.c</FilePath>
-            </File>
-            <File>
-              <FileName>Key.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Src\Key.c</FilePath>
             </File>
             <File>
               <FileName>OLED.c</FileName>
@@ -592,9 +587,14 @@
               <FilePath>.\Src\TIM_CallBack.c</FilePath>
             </File>
             <File>
-              <FileName>Buzzer.c</FileName>
+              <FileName>TB6612.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Src\Buzzer.c</FilePath>
+              <FilePath>.\Src\TB6612.c</FilePath>
+            </File>
+            <File>
+              <FileName>MPU6050.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Src\MPU6050.c</FilePath>
             </File>
           </Files>
         </Group>

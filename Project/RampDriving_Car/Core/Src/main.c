@@ -51,6 +51,8 @@
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 /* USER CODE BEGIN PFP */
+void Car_Ctrl(uint8_t Car_State);
+void Car_Trailing(void);
 
 /* USER CODE END PFP */
 
@@ -93,14 +95,37 @@ int main(void)
   MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
 	OLED_Init();
-	
+	HC06_Init();
+	Car_Init();
+	Encoder_Init();
+	Tim_Init();
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+		if (Ctrl_State)
+		{
+			OLED_Printf(0, 0, 8, "Ctrl_State: Open");
+		}
+		else
+		{
+			OLED_Printf(0, 0, 8, "Ctrl_State: Off");
+		}
+		OLED_Printf(0, 16, 8, "L: %-6.2f L:%-4d", L_Speed, Encoder_Count_L1);
+		OLED_Printf(0, 32, 8, "R: %-6.2f R:%-4d", R_Speed, Encoder_Count_R1);
+		OLED_Update();
 		
+//		Car_Ctrl(Car_State);
+		if (Ctrl_State)
+		{
+			Car_Trailing();
+		}
+		else
+		{
+			Car_Forward(0);
+		}
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -148,6 +173,72 @@ void SystemClock_Config(void)
 }
 
 /* USER CODE BEGIN 4 */
+/**
+  * @brief  小车控制函数
+  * @param  Car_State 输入的小车状态
+  * @retval 无
+  */
+void Car_Ctrl(uint8_t Car_State)
+{
+	if (Car_State == 'Q')
+		{
+			Car_Forward(Speed);
+		}
+		else if (Car_State == 'H')
+		{
+			Car_Backwards(Speed);
+		}
+		else if (Car_State == 'Z')
+		{
+			Car_Left(Speed);
+		}
+		else if (Car_State == 'Y')
+		{
+			Car_Right(Speed);
+		}
+		else
+		{
+			Car_Stop();
+		}
+}
+
+/**
+  * @brief  小车寻迹函数
+  * @param  无
+  * @retval 无
+  */
+void Car_Trailing(void)
+{
+	uint8_t* State;
+	State = Infrared_Judge();		//识别到了黑线返回0，识别不到黑线返回1
+	
+	if (!(State[0] & State[1]))		//中间和右边识别到了
+	{
+		if (State[1])
+		{
+			Car_Left(30);
+			return;
+		}
+		Car_Left(10);
+		return;
+	}
+	else if (!(State[3] & State[4]))		//中间和左边识别到了
+	{
+		if (State[3])
+		{
+			Car_Right(30);
+			return;
+		}
+		Car_Right(10);
+		return;
+	}
+	else if (!(State[0] & State[1] & State[2] & State[3] & State[4]))
+	{
+		Car_Forward(0);
+	}
+	
+	Car_Forward(20);
+}
 
 /* USER CODE END 4 */
 
