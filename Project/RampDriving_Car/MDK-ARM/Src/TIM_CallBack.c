@@ -1,14 +1,14 @@
 /**
   ******************************************************************************
   * @file         TIM_CallBack.h
-  * @brief        å®šæ—¶å™¨å›è°ƒå‡½æ•°
+  * @brief        ¶¨Ê±Æ÷»Øµ÷º¯Êı
 	*							 This file provides firmware functions to manage the following
-	*							 + å°†ç¨‹åºå†™å…¥å›è°ƒå‡½æ•°ä¸­
+	*							 + ½«³ÌĞòĞ´Èë»Øµ÷º¯ÊıÖĞ
   ******************************************************************************
   * @attention		
 	*
 	*	The required HAL header files such as gpio.h are included in main.h
-	* è¯¥æ–‡ä»¶ç”¨åˆ°äº†TIMï¼Œéœ€è¦åœ¨STM32CubeMXä¸­é…ç½®å¼€å¯
+	* ¸ÃÎÄ¼şÓÃµ½ÁËTIM£¬ĞèÒªÔÚSTM32CubeMXÖĞÅäÖÃ¿ªÆô
   ******************************************************************************
   */
 	
@@ -18,7 +18,7 @@
 /* Init ----------------------------------------------------------------------*/
 void Tim_Init(void)
 {
-	/* æŒ‰éœ€å¼€å¯ */
+	/* °´Ğè¿ªÆô */
 	HAL_TIM_Base_Start_IT(&htim3);
 //	HAL_TIM_PWM_Start(&htimX, TIM_CHANNEL_X);
 //	HAL_TIM_IC_Start_IT(&htimX, TIM_CHANNEL_X);
@@ -31,9 +31,9 @@ void Tim_Init(void)
 float Measured_Speed;
 
 /**
-  * @brief  TIM æ»¡è®¡æ•°ä¸­æ–­å›è°ƒå‡½æ•°
-  * @param  htim TIMçš„å¥æŸ„
-  * @retval æ— 
+  * @brief  TIM Âú¼ÆÊıÖĞ¶Ï»Øµ÷º¯Êı
+  * @param  htim TIMµÄ¾ä±ú
+  * @retval ÎŞ
   */
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
@@ -48,9 +48,9 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 }
 
 /**
-  * @brief  TIM è¾“å‡ºæ¯”è¾ƒä¸­æ–­å›è°ƒå‡½æ•°
-  * @param  htim TIMçš„å¥æŸ„
-  * @retval æ— 
+  * @brief  TIM Êä³ö±È½ÏÖĞ¶Ï»Øµ÷º¯Êı
+  * @param  htim TIMµÄ¾ä±ú
+  * @retval ÎŞ
   */
 void HAL_TIM_OC_DelayElapsedCallback(TIM_HandleTypeDef *htim)
 {
@@ -58,9 +58,9 @@ void HAL_TIM_OC_DelayElapsedCallback(TIM_HandleTypeDef *htim)
 }
 
 /**
-  * @brief  TIM è¾“å…¥æ•è·ä¸­æ–­å›è°ƒå‡½æ•°
-  * @param  htim TIMçš„å¥æŸ„
-  * @retval æ— 
+  * @brief  TIM ÊäÈë²¶»ñÖĞ¶Ï»Øµ÷º¯Êı
+  * @param  htim TIMµÄ¾ä±ú
+  * @retval ÎŞ
   */
 void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim)
 {
@@ -78,9 +78,9 @@ void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim)
 }
 
 /**
-  * @brief  TIM PWMä¸­æ–­å›è°ƒå‡½æ•°
-  * @param  htim TIMçš„å¥æŸ„
-  * @retval æ— 
+  * @brief  TIM PWMÖĞ¶Ï»Øµ÷º¯Êı
+  * @param  htim TIMµÄ¾ä±ú
+  * @retval ÎŞ
   */
 void HAL_TIM_PWM_PulseFinishedCallback(TIM_HandleTypeDef *htim)
 {

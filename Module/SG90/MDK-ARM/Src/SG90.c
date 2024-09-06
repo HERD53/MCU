@@ -1,14 +1,14 @@
 /**
   ******************************************************************************
   * @file         SG90.h
-  * @brief        èˆµæœºæ¨¡å—
+  * @brief        ¶æ»úÄ£¿é
 	*							 This file provides firmware functions to manage the following
-	*							 + æ§åˆ¶èˆµæœº
+	*							 + ¿ØÖÆ¶æ»ú
   ******************************************************************************
   * @attention		
 	*
 	*	The required HAL header files such as gpio.h are included in main.h
-	* è¯¥æ–‡ä»¶åŒ…å«TIM\PWMï¼Œéœ€è¦åœ¨STM32CubeMXä¸­é…ç½®å¼€å¯
+	* ¸ÃÎÄ¼ş°üº¬TIM\PWM£¬ĞèÒªÔÚSTM32CubeMXÖĞÅäÖÃ¿ªÆô
   ******************************************************************************
   */
 
@@ -24,9 +24,9 @@
 /* Variables -----------------------------------------------------------------*/
 
 /**
-  * @brief  èˆµæœºæ§åˆ¶
-  * @param  Angle èˆµæœºæ—‹è½¬çš„è§’åº¦
-  * @retval æ— 
+  * @brief  ¶æ»ú¿ØÖÆ
+  * @param  Angle ¶æ»úĞı×ªµÄ½Ç¶È
+  * @retval ÎŞ
   */
 void SteeringEngine_Control(uint32_t TIM_CHANNEL, uint8_t Angle)
 {

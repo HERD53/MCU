@@ -175,8 +175,8 @@ void SystemClock_Config(void)
 /* USER CODE BEGIN 4 */
 /**
   * @brief  小车控制函数
-  * @param  Car_State 输入的小车状态
-  * @retval 无
+  * @param  Car_State 输入的小车状�?
+  * @retval �?
   */
 void Car_Ctrl(uint8_t Car_State)
 {
@@ -204,15 +204,15 @@ void Car_Ctrl(uint8_t Car_State)
 
 /**
   * @brief  小车寻迹函数
-  * @param  无
-  * @retval 无
+  * @param  �?
+  * @retval �?
   */
 void Car_Trailing(void)
 {
 	uint8_t* State;
-	State = Infrared_Judge();		//识别到了黑线返回0，识别不到黑线返回1
+	State = Infrared_Judge();		//识别到了黑线返回0，识别不到黑线返�?1
 	
-	if (!(State[0] & State[1]))		//中间和右边识别到了
+	if (!(State[0] & State[1]))		//中间和右边识别到�?
 	{
 		if (State[1])
 		{
@@ -222,7 +222,7 @@ void Car_Trailing(void)
 		Car_Left(10);
 		return;
 	}
-	else if (!(State[3] & State[4]))		//中间和左边识别到了
+	else if (!(State[3] & State[4]))		//中间和左边识别到�?
 	{
 		if (State[3])
 		{

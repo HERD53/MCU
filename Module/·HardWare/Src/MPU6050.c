@@ -1,14 +1,14 @@
 /**
   ******************************************************************************
   * @file         MPU6050.c
-  * @brief        é™€èºä»ªæ¨¡å—
+  * @brief        ÍÓÂİÒÇÄ£¿é
 	*							 This file provides firmware functions to manage the following
-	*							 + é™€èºä»ªçš„æ•°æ®è§£æï¼›å§¿æ€æ£€æµ‹ï¼›
+	*							 + ÍÓÂİÒÇµÄÊı¾İ½âÎö£»×ËÌ¬¼ì²â£»
   ******************************************************************************
   * @attention		
 	*
 	*	The required HAL header files such as gpio.h are included in main.h
-	* è¯¥æ–‡ä»¶åŒ…å«I2C2ï¼Œéœ€è¦åœ¨STM32CubeMXä¸­é…ç½®å¼€å¯
+	* ¸ÃÎÄ¼ş°üº¬I2C2£¬ĞèÒªÔÚSTM32CubeMXÖĞÅäÖÃ¿ªÆô
   ******************************************************************************
   */
 
@@ -16,31 +16,31 @@
 #include "main.h"
 
 /* Define ----------------------------------------------------------------------*/
-#define SMPLRT_DIV   0x19  // é‡‡æ ·ç‡åˆ†é¢‘ï¼Œå…¸å‹å€¼ï¼š0x07(125Hz) */
-#define CONFIG       0x1A  // ä½é€šæ»¤æ³¢é¢‘ç‡ï¼Œå…¸å‹å€¼ï¼š0x06(5Hz) */
-#define GYRO_CONFIG  0x1B  // é™€èºä»ªè‡ªæ£€åŠæµ‹é‡èŒƒå›´ï¼Œå…¸å‹å€¼ï¼š0x18(ä¸è‡ªæ£€ï¼Œ2000deg/s) */
-#define ACCEL_CONFIG 0x1C  // åŠ é€Ÿè®¡è‡ªæ£€ã€æµ‹é‡èŒƒå›´åŠé«˜é€šæ»¤æ³¢é¢‘ç‡ï¼Œå…¸å‹å€¼ï¼š0x01(ä¸è‡ªæ£€ï¼Œ2Gï¼Œ5Hz) */
+#define SMPLRT_DIV   0x19  // ²ÉÑùÂÊ·ÖÆµ£¬µäĞÍÖµ£º0x07(125Hz) */
+#define CONFIG       0x1A  // µÍÍ¨ÂË²¨ÆµÂÊ£¬µäĞÍÖµ£º0x06(5Hz) */
+#define GYRO_CONFIG  0x1B  // ÍÓÂİÒÇ×Ô¼ì¼°²âÁ¿·¶Î§£¬µäĞÍÖµ£º0x18(²»×Ô¼ì£¬2000deg/s) */
+#define ACCEL_CONFIG 0x1C  // ¼ÓËÙ¼Æ×Ô¼ì¡¢²âÁ¿·¶Î§¼°¸ßÍ¨ÂË²¨ÆµÂÊ£¬µäĞÍÖµ£º0x01(²»×Ô¼ì£¬2G£¬5Hz) */
 
-#define ACCEL_XOUT_H 0x3B  // å­˜å‚¨æœ€è¿‘çš„Xè½´ã€Yè½´ã€Zè½´åŠ é€Ÿåº¦æ„Ÿåº”å™¨çš„æµ‹é‡å€¼ */
+#define ACCEL_XOUT_H 0x3B  // ´æ´¢×î½üµÄXÖá¡¢YÖá¡¢ZÖá¼ÓËÙ¶È¸ĞÓ¦Æ÷µÄ²âÁ¿Öµ */
 #define ACCEL_XOUT_L 0x3C
 #define ACCEL_YOUT_H 0x3D
 #define ACCEL_YOUT_L 0x3E
 #define ACCEL_ZOUT_H 0x3F
 #define ACCEL_ZOUT_L 0x40
 
-#define TEMP_OUT_H   0x41  // å­˜å‚¨çš„æœ€è¿‘æ¸©åº¦ä¼ æ„Ÿå™¨çš„æµ‹é‡å€¼ */
+#define TEMP_OUT_H   0x41  // ´æ´¢µÄ×î½üÎÂ¶È´«¸ĞÆ÷µÄ²âÁ¿Öµ */
 #define TEMP_OUT_L   0x42
 
-#define GYRO_XOUT_H  0x43  // å­˜å‚¨æœ€è¿‘çš„Xè½´ã€Yè½´ã€Zè½´é™€èºä»ªæ„Ÿåº”å™¨çš„æµ‹é‡å€¼ */
+#define GYRO_XOUT_H  0x43  // ´æ´¢×î½üµÄXÖá¡¢YÖá¡¢ZÖáÍÓÂİÒÇ¸ĞÓ¦Æ÷µÄ²âÁ¿Öµ */
 #define GYRO_XOUT_L  0x44 
 #define GYRO_YOUT_H  0x45
 #define GYRO_YOUT_L  0x46
 #define GYRO_ZOUT_H  0x47
 #define GYRO_ZOUT_L  0x48
 
-#define PWR_MGMT_1   0x6B   // ç”µæºç®¡ç†ï¼Œå…¸å‹å€¼ï¼š0x00(æ­£å¸¸å¯ç”¨) */
-#define WHO_AM_I     0x75		// IICåœ°å€å¯„å­˜å™¨(é»˜è®¤æ•°å€¼0x68ï¼Œåªè¯») */
-#define MPU6050_ADDR 0xD0		// MPU6050æ‰‹å†Œä¸Šçš„åœ°å€ï¼Œè¿™é‡Œä¹Ÿå¯ä»¥ä½¿ç”¨serchå‡½æ•°å»æœç´¢
+#define PWR_MGMT_1   0x6B   // µçÔ´¹ÜÀí£¬µäĞÍÖµ£º0x00(Õı³£ÆôÓÃ) */
+#define WHO_AM_I     0x75		// IICµØÖ·¼Ä´æÆ÷(Ä¬ÈÏÊıÖµ0x68£¬Ö»¶Á) */
+#define MPU6050_ADDR 0xD0		// MPU6050ÊÖ²áÉÏµÄµØÖ·£¬ÕâÀïÒ²¿ÉÒÔÊ¹ÓÃserchº¯ÊıÈ¥ËÑË÷
 /* Variables --------------------------------------------------------------------*/
 MPU6050_DataType MPU6050_Data;
 
@@ -62,16 +62,16 @@ uint8_t MPU6050_Init(int16_t Addr)
 	
 	HAL_I2C_Mem_Read(&hi2c2, Addr, WHO_AM_I, 1, &check, 1, 1000);
 	
-	if(check == 0x68)		//ç¡®è®¤è®¾å¤‡ç”¨ åœ°å€å¯„å­˜å™¨
+	if(check == 0x68)		//È·ÈÏÉè±¸ÓÃ µØÖ·¼Ä´æÆ÷
 	{	
 		check = 0x00;
-		Sensor_I2C2_Write(Addr, PWR_MGMT_1, &check, 1); 	    // å”¤é†’
+		Sensor_I2C2_Write(Addr, PWR_MGMT_1, &check, 1); 	    // »½ĞÑ
 		check = 0x07;	
-		Sensor_I2C2_Write(Addr, SMPLRT_DIV, &check, 1);	    // 1Khzçš„é€Ÿç‡
+		Sensor_I2C2_Write(Addr, SMPLRT_DIV, &check, 1);	    // 1KhzµÄËÙÂÊ
 		check = 0x00;
-		Sensor_I2C2_Write(Addr, ACCEL_CONFIG, &check, 1);	 	// åŠ é€Ÿåº¦é…ç½®
+		Sensor_I2C2_Write(Addr, ACCEL_CONFIG, &check, 1);	 	// ¼ÓËÙ¶ÈÅäÖÃ
 		check = 0x00;
-		Sensor_I2C2_Write(Addr, GYRO_CONFIG, &check, 1);		// é™€èºé…ç½®
+		Sensor_I2C2_Write(Addr, GYRO_CONFIG, &check, 1);		// ÍÓÂİÅäÖÃ
 		return 0;
 	}
 	
@@ -97,7 +97,7 @@ void MPU6050_Read_Accel(void)
 {
 	uint8_t Read_Buf[6];
 	
-	// å¯„å­˜å™¨ä¾æ¬¡æ˜¯åŠ é€Ÿåº¦Xé«˜ - åŠ é€Ÿåº¦Xä½ - åŠ é€Ÿåº¦Yé«˜ä½ - åŠ é€Ÿåº¦Yä½ä½ - åŠ é€Ÿåº¦Zé«˜ä½ - åŠ é€Ÿåº¦åº¦Zä½ä½
+	// ¼Ä´æÆ÷ÒÀ´ÎÊÇ¼ÓËÙ¶ÈX¸ß - ¼ÓËÙ¶ÈXµÍ - ¼ÓËÙ¶ÈY¸ßÎ» - ¼ÓËÙ¶ÈYµÍÎ» - ¼ÓËÙ¶ÈZ¸ßÎ» - ¼ÓËÙ¶È¶ÈZµÍÎ»
 	Sensor_I2C2_Read(Mpu6050Addr, ACCEL_XOUT_H, Read_Buf, 6); 
 	
 	MPU6050_Data.Accel_X = (int16_t)(Read_Buf[0] << 8 | Read_Buf[1]);
@@ -114,7 +114,7 @@ void MPU6050_Read_Gyro(void)
 {
 	uint8_t Read_Buf[6];
 	
-	// å¯„å­˜å™¨ä¾æ¬¡æ˜¯è§’åº¦Xé«˜ - è§’åº¦Xä½ - è§’åº¦Yé«˜ä½ - è§’åº¦Yä½ä½ - è§’åº¦Zé«˜ä½ - è§’åº¦Zä½ä½
+	// ¼Ä´æÆ÷ÒÀ´ÎÊÇ½Ç¶ÈX¸ß - ½Ç¶ÈXµÍ - ½Ç¶ÈY¸ßÎ» - ½Ç¶ÈYµÍÎ» - ½Ç¶ÈZ¸ßÎ» - ½Ç¶ÈZµÍÎ»
 	Sensor_I2C2_Read(Mpu6050Addr, GYRO_XOUT_H, Read_Buf, 6); 
 	
 	MPU6050_Data.Gyro_X = (int16_t)(Read_Buf[0] << 8 | Read_Buf[1]);

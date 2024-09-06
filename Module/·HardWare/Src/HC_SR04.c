@@ -1,14 +1,14 @@
 /**
   ******************************************************************************
   * @file         HC_SR04.h
-  * @brief        è¶…å£°æ³¢æ¨¡å—
+  * @brief        ³¬Éù²¨Ä£¿é
 	*							 This file provides firmware functions to manage the following
-	*							 + è¶…å£°æ³¢æµ‹è·
+	*							 + ³¬Éù²¨²â¾à
   ******************************************************************************
   * @attention		
 	*
 	*	The required HAL header files such as gpio.h are included in main.h
-	* è¯¥æ–‡ä»¶åŒ…å«GPIOã€TIM\è¾“å…¥æ•è·ï¼Œéœ€è¦åœ¨STM32CubeMXä¸­é…ç½®å¼€å¯
+	* ¸ÃÎÄ¼ş°üº¬GPIO¡¢TIM\ÊäÈë²¶»ñ£¬ĞèÒªÔÚSTM32CubeMXÖĞÅäÖÃ¿ªÆô
   ******************************************************************************
   */
 
@@ -30,9 +30,9 @@ uint32_t Ultrasonic_Start;
 uint32_t Ultrasonic_Stop;
 
 /**
-  * @brief  è¶…å£°æ³¢æµ‹è·
-  * @param  æ— 
-  * @retval æ— 
+  * @brief  ³¬Éù²¨²â¾à
+  * @param  ÎŞ
+  * @retval ÎŞ
   */
 uint32_t Ultrasonic_Ranging(void)
 {
@@ -44,14 +44,14 @@ uint32_t Ultrasonic_Ranging(void)
 	__HAL_TIM_SET_COUNTER(&htim2, 0);
 	HAL_Delay(20);
 	
-	val = ((Ultrasonic_Stop - Ultrasonic_Start) * 0.034) / 2;		//å•ä½ï¼šcm
+	val = ((Ultrasonic_Stop - Ultrasonic_Start) * 0.034) / 2;		//µ¥Î»£ºcm
 	return val;
 }
 
 /**
-  * @brief  TIM è¾“å…¥æ•è·ä¸­æ–­å›è°ƒå‡½æ•°
-  * @param  htim TIMçš„å¥æŸ„
-  * @retval æ— 
+  * @brief  TIM ÊäÈë²¶»ñÖĞ¶Ï»Øµ÷º¯Êı
+  * @param  htim TIMµÄ¾ä±ú
+  * @retval ÎŞ
   */
 void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim)
 {

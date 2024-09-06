@@ -6,15 +6,15 @@
 
 /* Variables -----------------------------------------------------------------*/
 typedef struct{
-	// è§’é€Ÿåº¦
+	// ½ÇËÙ¶È
 	float Accel_X;
 	float Accel_Y;
 	float Accel_Z;
-	// è§’åº¦
+	// ½Ç¶È
 	float Gyro_X;
 	float Gyro_Y;
 	float Gyro_Z;
-	// æ¸©åº¦
+	// ÎÂ¶È
 	float Temp;
 } MPU6050_DataType;
 

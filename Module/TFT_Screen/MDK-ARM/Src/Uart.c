@@ -20,9 +20,9 @@
 #define Receive_Num 64
 
 /* Variables -----------------------------------------------------------------*/
-uint8_t Receive_Data[2];							//æ¥æ”¶æ•°ç»„
-uint8_t Cache_Data[Receive_Num];			//ç¼“å­˜æ•°ç»„
-uint32_t Cache_Count;									//ç¼“å­˜è®¡æ•°
+uint8_t Receive_Data[2];							//½ÓÊÕÊı×é
+uint8_t Cache_Data[Receive_Num];			//»º´æÊı×é
+uint32_t Cache_Count;									//»º´æ¼ÆÊı
 
 /* Init ----------------------------------------------------------------------*/
 void Uart_Init(void)
@@ -31,9 +31,9 @@ void Uart_Init(void)
 }
 
 /**
-  * @brief  ä¸²å£å‘é€å‡½æ•°
-  * @param  Uart_Data  ä¸²å£å‘é€æ•°æ®
-  * @retval æ— 
+  * @brief  ´®¿Ú·¢ËÍº¯Êı
+  * @param  Uart_Data  ´®¿Ú·¢ËÍÊı¾İ
+  * @retval ÎŞ
   */
 void Uart_Send(uint8_t Uart_Data)
 {
@@ -43,23 +43,23 @@ void Uart_Send(uint8_t Uart_Data)
 }
 
 /**
-  * @brief  ä¸²å£ä¸­æ–­å‡½æ•°çš„å›è°ƒå‡½æ•°
-  * @param  huart  ä¸²å£çš„å¥æŸ„
-	* @param  Size  æ¥æ”¶åˆ°çš„æ•°æ®å¤§å°
-  * @retval æ— 
+  * @brief  ´®¿ÚÖĞ¶Ïº¯ÊıµÄ»Øµ÷º¯Êı
+  * @param  huart  ´®¿ÚµÄ¾ä±ú
+	* @param  Size  ½ÓÊÕµ½µÄÊı¾İ´óĞ¡
+  * @retval ÎŞ
   */
 void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size)
 {
-	if (huart == &huart1)		//é˜²æ­¢å…¶ä»–ä¸²å£è§¦å‘
+	if (huart == &huart1)		//·ÀÖ¹ÆäËû´®¿Ú´¥·¢
 	{
 		Cache_Data[Cache_Count] = Receive_Data[0];
 		Cache_Count++;
 		
-		if (Receive_Data[0] == ' ')		//åŒ…å°¾æ˜¯' '
+		if (Receive_Data[0] == ' ')		//°üÎ²ÊÇ' '
 		{
-			/* ç”¨æˆ·ä»£ç å¼€å§‹ */
+			/* ÓÃ»§´úÂë¿ªÊ¼ */
 			
-			/* ç”¨æˆ·ä»£ç ç»“æŸ */
+			/* ÓÃ»§´úÂë½áÊø */
 			memset(Cache_Data, 0, sizeof(Cache_Data));
 			Cache_Count = 0;
 		}

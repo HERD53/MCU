@@ -1,14 +1,14 @@
 /**
   ******************************************************************************
   * @file         Rotary_Encoder.c
-  * @brief        æ—‹è½¬ç¼–ç å™¨æ¨¡å—
+  * @brief        Ğı×ª±àÂëÆ÷Ä£¿é
 	*							 This file provides firmware functions to manage the following
-	*							 + æ£€æµ‹æ—‹è½¬ç¼–ç å™¨æ–¹å‘ã€é€Ÿåº¦ä»¥åŠåŠ é€Ÿåº¦
+	*							 + ¼ì²âĞı×ª±àÂëÆ÷·½Ïò¡¢ËÙ¶ÈÒÔ¼°¼ÓËÙ¶È
   ******************************************************************************
   * @attention		
 	*
 	*	The required HAL header files such as gpio.h are included in main.h
-	* è¯¥æ–‡ä»¶åŒ…å«TIM\è¾“å…¥æ•è·ï¼Œéœ€è¦åœ¨STM32CubeMXä¸­é…ç½®å¼€å¯
+	* ¸ÃÎÄ¼ş°üº¬TIM\ÊäÈë²¶»ñ£¬ĞèÒªÔÚSTM32CubeMXÖĞÅäÖÃ¿ªÆô
   ******************************************************************************
   */
 
@@ -25,7 +25,7 @@ void Encoder_Init(void)
 }
 
 /* Define --------------------------------------------------------------------*/
-//ç”µæºåœ¨ä¸‹ï¼Œå·¦å³
+//µçÔ´ÔÚÏÂ£¬×óÓÒ
 #define GPIO_PIN_LA GPIO_PIN_0
 #define GPIO_PIN_LB GPIO_PIN_1
 #define GPIO_PIN_RA GPIO_PIN_6
@@ -40,9 +40,9 @@ float L_Speed;
 float R_Speed;
 
 /**
-  * @brief  TIM è¾“å…¥æ•è·ä¸­æ–­å›è°ƒå‡½æ•°
-  * @param  htim TIMçš„å¥æŸ„
-  * @retval æ— 
+  * @brief  TIM ÊäÈë²¶»ñÖĞ¶Ï»Øµ÷º¯Êı
+  * @param  htim TIMµÄ¾ä±ú
+  * @retval ÎŞ
   */
 //void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim)
 //{

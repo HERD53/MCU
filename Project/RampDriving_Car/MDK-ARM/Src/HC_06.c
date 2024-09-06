@@ -1,16 +1,16 @@
 /**
   ******************************************************************************
   * @file         HC-06.h
-  * @brief				è“ç‰™æ¨¡å—
+  * @brief				À¶ÑÀÄ£¿é
 	*							 This file provides firmware functions to manage the following
-	*							 + è“ç‰™å‘é€
-	*							 + è“ç‰™æ¥æ”¶
+	*							 + À¶ÑÀ·¢ËÍ
+	*							 + À¶ÑÀ½ÓÊÕ
   ******************************************************************************
   * @attention		
 	*
 	*	The required HAL header files such as gpio.h are included in main.h
-	* è¯¥æ–‡ä»¶åŒ…å«USARTã€DMAã€OLEDï¼Œéœ€è¦åœ¨STM32CubeMXä¸­é…ç½®å¼€å¯
-	* OLEDéœ€è¦é…ç½®å¥½SCLã€SDAä¸ºå¼€æ¼è¾“å‡ºè¿›è¡ŒIICé€šä¿¡
+	* ¸ÃÎÄ¼ş°üº¬USART¡¢DMA¡¢OLED£¬ĞèÒªÔÚSTM32CubeMXÖĞÅäÖÃ¿ªÆô
+	* OLEDĞèÒªÅäÖÃºÃSCL¡¢SDAÎª¿ªÂ©Êä³ö½øĞĞIICÍ¨ĞÅ
   ******************************************************************************
   */
 
@@ -20,12 +20,12 @@
 #include <string.h>
 
 /* Define --------------------------------------------------------------------*/
-#define Receive_Num 64							//ç¼“å­˜æ•°ç»„å¤§å°
+#define Receive_Num 64							//»º´æÊı×é´óĞ¡
 
 /* Variables -----------------------------------------------------------------*/
-uint8_t Receive_Data[2];							//æ¥æ”¶æ•°ç»„
-uint8_t Cache_Data[Receive_Num];			//ç¼“å­˜æ•°ç»„
-uint32_t Cache_Count;									//ç¼“å­˜è®¡æ•°
+uint8_t Receive_Data[2];							//½ÓÊÕÊı×é
+uint8_t Cache_Data[Receive_Num];			//»º´æÊı×é
+uint32_t Cache_Count;									//»º´æ¼ÆÊı
 uint8_t Speed;
 uint8_t Car_State;
 uint8_t Ctrl_State;
@@ -37,37 +37,37 @@ void HC06_Init(void)
 }
 
 /**
-  * @brief  ä¸²å£ä¸­æ–­å‡½æ•°çš„å›è°ƒå‡½æ•°
-  * @param  huart  ä¸²å£çš„å¥æŸ„
-	* @param  Size  æ¥æ”¶åˆ°çš„æ•°æ®å¤§å°
-  * @retval æ— 
+  * @brief  ´®¿ÚÖĞ¶Ïº¯ÊıµÄ»Øµ÷º¯Êı
+  * @param  huart  ´®¿ÚµÄ¾ä±ú
+	* @param  Size  ½ÓÊÕµ½µÄÊı¾İ´óĞ¡
+  * @retval ÎŞ
   */
 void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size)
 {
-	if (huart == &huart1)		//é˜²æ­¢å…¶ä»–ä¸²å£è§¦å‘
+	if (huart == &huart1)		//·ÀÖ¹ÆäËû´®¿Ú´¥·¢
 	{
 		Cache_Data[Cache_Count] = Receive_Data[0];
 		Cache_Count++;
 		
-		if (Receive_Data[0] == 0x5A)		//åŒ…å°¾æ˜¯' '
+		if (Receive_Data[0] == 0x5A)		//°üÎ²ÊÇ' '
 		{
-			/* ç”¨æˆ·ä»£ç å¼€å§‹ */
-			//é¥æ§
+			/* ÓÃ»§´úÂë¿ªÊ¼ */
+			//Ò£¿Ø
 			Speed = Cache_Data[2];
 			
-			if (Cache_Data[1] & 0x01)		//å‰
+			if (Cache_Data[1] & 0x01)		//Ç°
 			{
 				Car_State = 'Q';
 			}
-			else if (Cache_Data[1] & 0x02)		//å
+			else if (Cache_Data[1] & 0x02)		//ºó
 			{
 				Car_State = 'H';
 			}
-			else if (Cache_Data[1] & 0x04)		//å·¦
+			else if (Cache_Data[1] & 0x04)		//×ó
 			{
 				Car_State = 'Z';
 			}
-			else if (Cache_Data[1] & 0x08)		//å³
+			else if (Cache_Data[1] & 0x08)		//ÓÒ
 			{
 				Car_State = 'Y';
 			}
@@ -76,10 +76,10 @@ void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size)
 				Car_State = 'S';
 			}
 			
-			//è‡ªåŠ¨
+			//×Ô¶¯
 			Ctrl_State = Cache_Data[3];
 			
-			/* ç”¨æˆ·ä»£ç ç»“æŸ */
+			/* ÓÃ»§´úÂë½áÊø */
 			memset(Cache_Data, 0, sizeof(Cache_Data));
 			Cache_Count = 0;
 		}

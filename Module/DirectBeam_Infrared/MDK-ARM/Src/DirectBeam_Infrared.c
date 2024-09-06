@@ -1,14 +1,14 @@
 /**
   ******************************************************************************
   * @file         DirectBeam_Infrared.c
-  * @brief        å¯¹å°„å¼çº¢å¤–æ¨¡å—
+  * @brief        ¶ÔÉäÊ½ºìÍâÄ£¿é
 	*							 This file provides firmware functions to manage the following
-	*							 + æ£€æµ‹å¯¹å°„å¼çº¢å¤–æ¨¡å—è¢«é®æŒ¡çš„æ¬¡æ•°
+	*							 + ¼ì²â¶ÔÉäÊ½ºìÍâÄ£¿é±»ÕÚµ²µÄ´ÎÊı
   ******************************************************************************
   * @attention		
 	*
 	*	The required HAL header files such as gpio.h are included in main.h
-	* è¯¥æ–‡ä»¶åŒ…å«TIM\è¾“å…¥æ•è·ï¼Œéœ€è¦åœ¨STM32CubeMXä¸­é…ç½®å¼€å¯
+	* ¸ÃÎÄ¼ş°üº¬TIM\ÊäÈë²¶»ñ£¬ĞèÒªÔÚSTM32CubeMXÖĞÅäÖÃ¿ªÆô
   ******************************************************************************
   */
 
@@ -24,9 +24,9 @@
 uint32_t DirectBeam_Count;
 
 /**
-  * @brief  TIM è¾“å…¥æ•è·ä¸­æ–­å›è°ƒå‡½æ•°
-  * @param  htim TIMçš„å¥æŸ„
-  * @retval æ— 
+  * @brief  TIM ÊäÈë²¶»ñÖĞ¶Ï»Øµ÷º¯Êı
+  * @param  htim TIMµÄ¾ä±ú
+  * @retval ÎŞ
   */
 void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim)
 {

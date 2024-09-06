@@ -1,14 +1,14 @@
 /**
   ******************************************************************************
   * @file         Key.c
-  * @brief        æŒ‰é”®æ¨¡å—
+  * @brief        °´¼üÄ£¿é
 	*							 This file provides firmware functions to manage the following
-	*							 + æ£€æµ‹æŒ‰é”®æ˜¯å¦æŒ‰ä¸‹
+	*							 + ¼ì²â°´¼üÊÇ·ñ°´ÏÂ
   ******************************************************************************
   * @attention		
 	*
 	*	The required HAL header files such as gpio.h are included in main.h
-	*	è¯¥æ–‡ä»¶åŒ…å«GPIOã€EXTIã€TIMï¼Œéœ€è¦åœ¨STM32CubeMXä¸­é…ç½®å¼€å¯
+	*	¸ÃÎÄ¼ş°üº¬GPIO¡¢EXTI¡¢TIM£¬ĞèÒªÔÚSTM32CubeMXÖĞÅäÖÃ¿ªÆô
   ******************************************************************************
   */
 
@@ -26,97 +26,97 @@ void Key_Init(void)
 #define GPIO_PIN_X GPIO_PIN_12		//GPIO_PIN_X (X...0,1,2,3,4,5,6,7)
 
 /* Variables -----------------------------------------------------------------*/
-uint32_t Key_Count;			//æ£€æµ‹é•¿æŒ‰è®¡æ•°
-uint8_t Key_Tim_Flag;		//æŒ‰é”®é•¿æŒ‰æ ‡å¿—ä½
-uint8_t Key_Flag;				//æŒ‰é”®é•¿æŒ‰æ ‡å¿—ä½
+uint32_t Key_Count;			//¼ì²â³¤°´¼ÆÊı
+uint8_t Key_Tim_Flag;		//°´¼ü³¤°´±êÖ¾Î»
+uint8_t Key_Flag;				//°´¼ü³¤°´±êÖ¾Î»
 
 /**
-  * @brief  EXTIä¸­æ–­å›è°ƒå‡½æ•°
-  * @param  GPIO_Pin GPIOçš„å¼•è„š
-  * @retval æ— 
+  * @brief  EXTIÖĞ¶Ï»Øµ÷º¯Êı
+  * @param  GPIO_Pin GPIOµÄÒı½Å
+  * @retval ÎŞ
   */
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
-	if (GPIO_Pin == GPIO_PIN_X)		//é˜²æ­¢å…¶ä»–GPIOå¼•è„šè§¦å‘
+	if (GPIO_Pin == GPIO_PIN_X)		//·ÀÖ¹ÆäËûGPIOÒı½Å´¥·¢
 	{
 		uint32_t num = 200000;
 		while (num--);
-		if (HAL_GPIO_ReadPin(GPIOX, GPIO_PIN_X) == GPIO_PIN_SET)		//é˜²æ­¢æŠ–åŠ¨
+		if (HAL_GPIO_ReadPin(GPIOX, GPIO_PIN_X) == GPIO_PIN_SET)		//·ÀÖ¹¶¶¶¯
 		{
 			Key_Tim_Flag = 1;
-			/* ç”¨æˆ·ä»£ç å¼€å§‹ */
+			/* ÓÃ»§´úÂë¿ªÊ¼ */
 			
-			/* ç”¨æˆ·ä»£ç ç»“æŸ */
+			/* ÓÃ»§´úÂë½áÊø */
 		}
 		else
 		{
 			Key_Tim_Flag = 0;
-			/* ç”¨æˆ·ä»£ç å¼€å§‹ */
+			/* ÓÃ»§´úÂë¿ªÊ¼ */
 			
-			/* ç”¨æˆ·ä»£ç ç»“æŸ */
+			/* ÓÃ»§´úÂë½áÊø */
 		}
 	}
 }
 
 /**
-  * @brief  TIMä¸­æ–­å›è°ƒå‡½æ•°
-  * @param  htim TIMçš„å¥æŸ„
-  * @retval æ— 
+  * @brief  TIMÖĞ¶Ï»Øµ÷º¯Êı
+  * @param  htim TIMµÄ¾ä±ú
+  * @retval ÎŞ
   */
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
-	if (htim == &htim2)		//é˜²æ­¢å…¶ä»–å®šæ—¶å™¨è§¦å‘
+	if (htim == &htim2)		//·ÀÖ¹ÆäËû¶¨Ê±Æ÷´¥·¢
 	{
 		if (Key_Tim_Flag)
 		{
-			/* é•¿æŒ‰æŒ‰ä¸‹ */
+			/* ³¤°´°´ÏÂ */
 			Key_Count++;
-			if (Key_Count == 1000)		//å®šæ—¶å™¨ä¸­æ–­1msè¿›å…¥æ—¶ï¼Œä¸ºå®šæ—¶1000ms
+			if (Key_Count == 1000)		//¶¨Ê±Æ÷ÖĞ¶Ï1ms½øÈëÊ±£¬Îª¶¨Ê±1000ms
 			{
-				/* è®¡æ•°æ»¡è¶³ */
-				Key_Count = 0;		//è®¡æ•°æ¸…ç©º
-				Key_Flag = 1;			//å…¶ä»–å‡½æ•°å¯ä»¥æ£€æµ‹è¿™ä¸ªå˜é‡ï¼Œè¾¾åˆ°é•¿æŒ‰è§¦å‘å…¶ä»–å‡½æ•°
-				/* ç”¨æˆ·ä»£ç å¼€å§‹ */
+				/* ¼ÆÊıÂú×ã */
+				Key_Count = 0;		//¼ÆÊıÇå¿Õ
+				Key_Flag = 1;			//ÆäËûº¯Êı¿ÉÒÔ¼ì²âÕâ¸ö±äÁ¿£¬´ïµ½³¤°´´¥·¢ÆäËûº¯Êı
+				/* ÓÃ»§´úÂë¿ªÊ¼ */
 				
-				/* ç”¨æˆ·ä»£ç ç»“æŸ */
+				/* ÓÃ»§´úÂë½áÊø */
 			}
 		}
 		else
 		{
-			/* é•¿æŒ‰æ¾å¼€ */
-			Key_Count = 0;		//é˜²æ­¢æ¾å¼€åå†æ¬¡é•¿æŒ‰çš„æ—¶é—´ä¸æ˜¯è®¾å®šå€¼
-			/* ç”¨æˆ·ä»£ç å¼€å§‹ */
+			/* ³¤°´ËÉ¿ª */
+			Key_Count = 0;		//·ÀÖ¹ËÉ¿ªºóÔÙ´Î³¤°´µÄÊ±¼ä²»ÊÇÉè¶¨Öµ
+			/* ÓÃ»§´úÂë¿ªÊ¼ */
 			
-			/* ç”¨æˆ·ä»£ç ç»“æŸ */
+			/* ÓÃ»§´úÂë½áÊø */
 		}
 	}
 }
 
 /**
-  * @brief  æŒ‰é”®æ£€æµ‹æ¨¡å—
-  * @param  æ— 
-  * @retval æ— 
+  * @brief  °´¼ü¼ì²âÄ£¿é
+  * @param  ÎŞ
+  * @retval ÎŞ
   */
 void Key_Detection(void)
 {
 	if (HAL_GPIO_ReadPin(GPIOX, GPIO_PIN_X) == GPIO_PIN_SET)
 	{
-		/* æŒ‰ä¸‹æŒ‰é”® */
+		/* °´ÏÂ°´¼ü */
 		Key_Tim_Flag = 1;
 		HAL_Delay(20);
-		if (HAL_GPIO_ReadPin(GPIOX, GPIO_PIN_X) == GPIO_PIN_SET)		//é˜²æ­¢æŠ–åŠ¨
+		if (HAL_GPIO_ReadPin(GPIOX, GPIO_PIN_X) == GPIO_PIN_SET)		//·ÀÖ¹¶¶¶¯
 		{
-			/* ç”¨æˆ·ä»£ç å¼€å§‹ */
+			/* ÓÃ»§´úÂë¿ªÊ¼ */
 			
-			/* ç”¨æˆ·ä»£ç ç»“æŸ */
+			/* ÓÃ»§´úÂë½áÊø */
 		}
 	}
 	else
 	{
-		/* æ¾å¼€æŒ‰é”® */
+		/* ËÉ¿ª°´¼ü */
 		Key_Tim_Flag = 0;
-		/* ç”¨æˆ·ä»£ç å¼€å§‹ */
+		/* ÓÃ»§´úÂë¿ªÊ¼ */
 		
-		/* ç”¨æˆ·ä»£ç ç»“æŸ */
+		/* ÓÃ»§´úÂë½áÊø */
 	}
 }

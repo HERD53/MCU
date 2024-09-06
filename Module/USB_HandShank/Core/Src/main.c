@@ -119,6 +119,7 @@ int main(void)
 		Encoder_Detection();
 		OLED_Printf(0, 0, 8, "Count: %-5d", Rotary_Encoder_Count);
 		OLED_Printf(0, 16, 8, "Degree: %-5d", Degree);
+		OLED_Printf(0, 0, 8, "1234567890");
 		OLED_Update();
 		
 		mouseHID.x = Degree;

@@ -1,14 +1,14 @@
 /**
   ******************************************************************************
   * @file         Rotary_Encoder.c
-  * @brief        æ—‹è½¬ç¼–ç å™¨æ¨¡å—
+  * @brief        Ğı×ª±àÂëÆ÷Ä£¿é
 	*							 This file provides firmware functions to manage the following
-	*							 + æ£€æµ‹æ—‹è½¬ç¼–ç å™¨æ–¹å‘ã€é€Ÿåº¦ä»¥åŠåŠ é€Ÿåº¦
+	*							 + ¼ì²âĞı×ª±àÂëÆ÷·½Ïò¡¢ËÙ¶ÈÒÔ¼°¼ÓËÙ¶È
   ******************************************************************************
   * @attention		
 	*
 	*	The required HAL header files such as gpio.h are included in main.h
-	* è¯¥æ–‡ä»¶åŒ…å«TIM\è¾“å…¥æ•è·ï¼Œéœ€è¦åœ¨STM32CubeMXä¸­é…ç½®å¼€å¯
+	* ¸ÃÎÄ¼ş°üº¬TIM\ÊäÈë²¶»ñ£¬ĞèÒªÔÚSTM32CubeMXÖĞÅäÖÃ¿ªÆô
   ******************************************************************************
   */
 
@@ -18,7 +18,7 @@
 /* Init ----------------------------------------------------------------------*/
 void Encoder_Init(void)
 {
-	HAL_TIM_Encoder_Start(&htim1, TIM_CHANNEL_ALL);      //å¼€å¯ç¼–ç å™¨å®šæ—¶å™¨
+	HAL_TIM_Encoder_Start(&htim1, TIM_CHANNEL_ALL);      //¿ªÆô±àÂëÆ÷¶¨Ê±Æ÷
   __HAL_TIM_ENABLE_IT(&htim1,TIM_IT_UPDATE);
 	__HAL_TIM_SET_COUNTER(&htim1, 10000);
 //	HAL_TIM_IC_Start_IT(&htim1, TIM_CHANNEL_1);
@@ -29,16 +29,16 @@ void Encoder_Init(void)
 #define GPIOX GPIOA
 #define GPIO_PIN_A GPIO_PIN_8
 #define GPIO_PIN_B GPIO_PIN_9
-#define COUNTERNUM __HAL_TIM_GetCounter(&htim1)        //è·å–ç¼–ç å™¨å®šæ—¶å™¨ä¸­çš„è®¡æ•°å€¼
+#define COUNTERNUM __HAL_TIM_GetCounter(&htim1)        //»ñÈ¡±àÂëÆ÷¶¨Ê±Æ÷ÖĞµÄ¼ÆÊıÖµ
 
 /* Variables -----------------------------------------------------------------*/
 int32_t Rotary_Encoder_Count;
 int8_t Degree;
 
 /**
-  * @brief  æ—‹è½¬ç¼–ç å™¨æ£€æµ‹
-  * @param  æ— 
-  * @retval æ—‹è½¬çš„æ ¼æ•°
+  * @brief  Ğı×ª±àÂëÆ÷¼ì²â
+  * @param  ÎŞ
+  * @retval Ğı×ªµÄ¸ñÊı
   */
 uint32_t Encoder_Detection(void)
 {
@@ -60,9 +60,9 @@ uint32_t Encoder_Detection(void)
 }
 
 /**
-  * @brief  TIM è¾“å…¥æ•è·ä¸­æ–­å›è°ƒå‡½æ•°
-  * @param  htim TIMçš„å¥æŸ„
-  * @retval æ— 
+  * @brief  TIM ÊäÈë²¶»ñÖĞ¶Ï»Øµ÷º¯Êı
+  * @param  htim TIMµÄ¾ä±ú
+  * @retval ÎŞ
   */
 void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim)
 {
@@ -92,11 +92,11 @@ void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim)
 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
-  //å¦‚æœæ˜¯ç¼–ç å™¨æ›´æ–°ä¸­æ–­,å³10mså†…,è„‰å†²æ•°è¶…è¿‡äº†è®¡æ•°èŒƒå›´,éœ€è¦è¿›è¡Œå¤„ç†
+  //Èç¹ûÊÇ±àÂëÆ÷¸üĞÂÖĞ¶Ï,¼´10msÄÚ,Âö³åÊı³¬¹ıÁË¼ÆÊı·¶Î§,ĞèÒª½øĞĞ´¦Àí
 	if (htim->Instance == htim1.Instance)
 	{
-		if(COUNTERNUM < 10000)	Rotary_Encoder_Count++;         //å‘ä¸Šè®¡æ•°è¶…è¿‡10000ï¼Œæ­£æº¢å‡º+1
-		else if(COUNTERNUM > 10000)	Rotary_Encoder_Count--;     //å‘ä¸‹è®¡æ•°å°äº0ï¼Œè´Ÿæº¢å‡º+1
-		__HAL_TIM_SetCounter(&htim1, 10000);            				//é‡æ–°è®¾å®šåˆå§‹å€¼			
+		if(COUNTERNUM < 10000)	Rotary_Encoder_Count++;         //ÏòÉÏ¼ÆÊı³¬¹ı10000£¬ÕıÒç³ö+1
+		else if(COUNTERNUM > 10000)	Rotary_Encoder_Count--;     //ÏòÏÂ¼ÆÊıĞ¡ÓÚ0£¬¸ºÒç³ö+1
+		__HAL_TIM_SetCounter(&htim1, 10000);            				//ÖØĞÂÉè¶¨³õÊ¼Öµ			
 	}
 }

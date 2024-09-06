@@ -44,21 +44,21 @@ void SPI_WriteData(uint8_t Data)
 	}
 }
 
-//å‘æ¶²æ™¶å±å†™ä¸€ä¸ª8ä½æŒ‡ä»¤
+//ÏòÒº¾§ÆÁĞ´Ò»¸ö8Î»Ö¸Áî
 void LCD_WriteIndex(uint8_t Index)
 {
    LCD_DC_CLR;
 	 SPI_WriteData(Index);
 }
 
-//å‘æ¶²æ™¶å±å†™ä¸€ä¸ª8ä½æ•°æ®
+//ÏòÒº¾§ÆÁĞ´Ò»¸ö8Î»Êı¾İ
 void LCD_WriteData(uint8_t Data)
 {
    LCD_DC_SET;
    SPI_WriteData(Data);
 }
 
-//å‘æ¶²æ™¶å±å†™ä¸€ä¸ª16ä½æ•°æ®
+//ÏòÒº¾§ÆÁĞ´Ò»¸ö16Î»Êı¾İ
 void LCD_WriteData_16Bit(uint16_t Data)
 {
    LCD_DC_SET;
@@ -184,17 +184,17 @@ void LCD_Init(void)
 	LCD_WriteData(0x05);
 	//Lcd_WriteIndex(0x36); 	//65k mode
 	//Lcd_WriteData(0x40);
-	ST7735_SetRotation(0);		//è®¾ç½®å›¾åƒæ—‹è½¬è§’åº¦
+	ST7735_SetRotation(0);		//ÉèÖÃÍ¼ÏñĞı×ª½Ç¶È
 	LCD_WriteIndex(0x29);			//Display on
 	LCD_WriteIndex(0x2C);
 	LCD_WriteIndex(0x29);			//Display on	
 }
 
 /*************************************************
-	å‡½æ•°åï¼šLCD_Set_Region
-	åŠŸèƒ½ï¼šè®¾ç½®lcdæ˜¾ç¤ºåŒºåŸŸï¼Œåœ¨æ­¤åŒºåŸŸå†™ç‚¹æ•°æ®è‡ªåŠ¨æ¢è¡Œ
-	å…¥å£å‚æ•°ï¼šxyèµ·ç‚¹å’Œç»ˆç‚¹
-	è¿”å›å€¼ï¼šæ— 
+	º¯ÊıÃû£ºLCD_Set_Region
+	¹¦ÄÜ£ºÉèÖÃlcdÏÔÊ¾ÇøÓò£¬ÔÚ´ËÇøÓòĞ´µãÊı¾İ×Ô¶¯»»ĞĞ
+	Èë¿Ú²ÎÊı£ºxyÆğµãºÍÖÕµã
+	·µ»ØÖµ£ºÎŞ
 *************************************************/
 void LCD_SetRegion(uint16_t x_start, uint16_t y_start, uint16_t x_end, uint16_t y_end)
 {		
@@ -215,10 +215,10 @@ void LCD_SetRegion(uint16_t x_start, uint16_t y_start, uint16_t x_end, uint16_t 
 }
 
 /*************************************************
-	å‡½æ•°åï¼šLCD_Set_XY
-	åŠŸèƒ½ï¼šè®¾ç½®lcdæ˜¾ç¤ºèµ·å§‹ç‚¹
-	å…¥å£å‚æ•°ï¼šxyåæ ‡
-	è¿”å›å€¼ï¼šæ— 
+	º¯ÊıÃû£ºLCD_Set_XY
+	¹¦ÄÜ£ºÉèÖÃlcdÏÔÊ¾ÆğÊ¼µã
+	Èë¿Ú²ÎÊı£ºxy×ø±ê
+	·µ»ØÖµ£ºÎŞ
 *************************************************/
 void LCD_SetXY(uint16_t x, uint16_t y)
 {
@@ -226,10 +226,10 @@ void LCD_SetXY(uint16_t x, uint16_t y)
 }
 	
 /*************************************************
-	å‡½æ•°åï¼šLCD_DrawPoint
-	åŠŸèƒ½ï¼šç”»ä¸€ä¸ªç‚¹
-	å…¥å£å‚æ•°ï¼šæ— 
-	è¿”å›å€¼ï¼šæ— 
+	º¯ÊıÃû£ºLCD_DrawPoint
+	¹¦ÄÜ£º»­Ò»¸öµã
+	Èë¿Ú²ÎÊı£ºÎŞ
+	·µ»ØÖµ£ºÎŞ
 *************************************************/
 void Gui_DrawPoint(uint16_t x, uint16_t y, uint16_t Color)
 {
@@ -238,15 +238,15 @@ void Gui_DrawPoint(uint16_t x, uint16_t y, uint16_t Color)
 }
 
 /*****************************************
-	å‡½æ•°åŠŸèƒ½ï¼šè¯»TFTæŸä¸€ç‚¹çš„é¢œè‰²                          
-	å‡ºå£å‚æ•°ï¼šcolor  ç‚¹é¢œè‰²å€¼                                 
+	º¯Êı¹¦ÄÜ£º¶ÁTFTÄ³Ò»µãµÄÑÕÉ«                          
+	³ö¿Ú²ÎÊı£ºcolor  µãÑÕÉ«Öµ                                 
 ******************************************/
 unsigned int LCD_ReadPoint(uint16_t x, uint16_t y)
 {
   unsigned int Data;
   LCD_SetXY(x, y);
 
-  //LCD_ReadData();//ä¸¢æ‰æ— ç”¨å­—èŠ‚
+  //LCD_ReadData();//¶ªµôÎŞÓÃ×Ö½Ú
   //Data=Lcd_ReadData();
   LCD_WriteData(Data);
 	
@@ -254,10 +254,10 @@ unsigned int LCD_ReadPoint(uint16_t x, uint16_t y)
 }
 
 /*************************************************
-å‡½æ•°åï¼šLcd_Clear
-åŠŸèƒ½ï¼šå…¨å±æ¸…å±å‡½æ•°
-å…¥å£å‚æ•°ï¼šå¡«å……é¢œè‰²COLOR
-è¿”å›å€¼ï¼šæ— 
+º¯ÊıÃû£ºLcd_Clear
+¹¦ÄÜ£ºÈ«ÆÁÇåÆÁº¯Êı
+Èë¿Ú²ÎÊı£ºÌî³äÑÕÉ«COLOR
+·µ»ØÖµ£ºÎŞ
 *************************************************/
 void LCD_Clear(uint16_t Color)               
 {	
@@ -272,10 +272,10 @@ void LCD_Clear(uint16_t Color)
 }
 
 /*************************************************
-å‡½æ•°åï¼šLCD_GBR2RGB
-åŠŸèƒ½ï¼šGBRè½¬RGBå‡½æ•°
-å…¥å£å‚æ•°ï¼šGBRé¢œè‰²å‚æ•°
-è¿”å›å€¼ï¼šRGBé¢œè‰²å‚æ•°
+º¯ÊıÃû£ºLCD_GBR2RGB
+¹¦ÄÜ£ºGBR×ªRGBº¯Êı
+Èë¿Ú²ÎÊı£ºGBRÑÕÉ«²ÎÊı
+·µ»ØÖµ£ºRGBÑÕÉ«²ÎÊı
 *************************************************/
 uint16_t LCD_GBR2RGB(uint16_t c)
 {
@@ -289,17 +289,17 @@ uint16_t LCD_GBR2RGB(uint16_t c)
 }
 
 /**
-  * @brief  å±å¹•ä¸Šç”»åœ†
-  * @param  X åœ†å¿ƒçš„Xåæ ‡
-  * @param  Y åœ†å¿ƒçš„Yåæ ‡
-  * @param  R åœ†çš„åŠå¾„
-  * @param  Color åœ†çš„é¢œè‰²
-  * @param  Thickness åœ†çš„é¢œè‰²
+  * @brief  ÆÁÄ»ÉÏ»­Ô²
+  * @param  X Ô²ĞÄµÄX×ø±ê
+  * @param  Y Ô²ĞÄµÄY×ø±ê
+  * @param  R Ô²µÄ°ë¾¶
+  * @param  Color Ô²µÄÑÕÉ«
+  * @param  Thickness Ô²µÄÑÕÉ«
   * @retval 
   */
 void Gui_Circle(uint16_t X, uint16_t Y, uint16_t R, uint16_t Color, uint8_t Thickness)
 {
-	//Bresenhamç®—æ³• 
+	//BresenhamËã·¨ 
 	unsigned short a, b;
 	int c;
 	a = 0;

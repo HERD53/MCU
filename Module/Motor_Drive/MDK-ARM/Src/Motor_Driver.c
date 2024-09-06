@@ -1,14 +1,14 @@
 /**
   ******************************************************************************
   * @file         Motor_Driver.c
-  * @brief        ç”µæœºé©±åŠ¨æ¨¡å—
+  * @brief        µç»úÇı¶¯Ä£¿é
 	*							 This file provides firmware functions to manage the following
-	*							 + é©±åŠ¨ç”µæœº
+	*							 + Çı¶¯µç»ú
   ******************************************************************************
   * @attention		
 	*
 	*	The required HAL header files such as gpio.h are included in main.h
-	* è¯¥æ–‡ä»¶åŒ…å«TIMï¼Œéœ€è¦åœ¨STM32CubeMXä¸­é…ç½®å¼€å¯
+	* ¸ÃÎÄ¼ş°üº¬TIM£¬ĞèÒªÔÚSTM32CubeMXÖĞÅäÖÃ¿ªÆô
   ******************************************************************************
   */
 
@@ -48,64 +48,64 @@ void Car_Init(void)
 
 void Car_Forward(uint8_t Speed)
 {
-	//å·¦å‰è½®
+	//×óÇ°ÂÖ
 	__HAL_TIM_SetCompare(&htim2, TIM_CHANNEL_3, Speed);
 	__HAL_TIM_SetCompare(&htim2, TIM_CHANNEL_4, 0);
-	//å·¦åè½®
+	//×óºóÂÖ
 	__HAL_TIM_SetCompare(&htim2, TIM_CHANNEL_2, Speed);
 	__HAL_TIM_SetCompare(&htim2, TIM_CHANNEL_1, 0);
-	//å³å‰è½®
+	//ÓÒÇ°ÂÖ
 	__HAL_TIM_SetCompare(&htim3, TIM_CHANNEL_3, Speed);
 	__HAL_TIM_SetCompare(&htim3, TIM_CHANNEL_4, 0);
-	//å³åè½®
+	//ÓÒºóÂÖ
 	__HAL_TIM_SetCompare(&htim3, TIM_CHANNEL_2, Speed);
 	__HAL_TIM_SetCompare(&htim3, TIM_CHANNEL_1, 0);
 }
 
 void Car_Backwards(uint8_t Speed)
 {
-	//å·¦å‰è½®
+	//×óÇ°ÂÖ
 	__HAL_TIM_SetCompare(&htim2, TIM_CHANNEL_3, 0);
 	__HAL_TIM_SetCompare(&htim2, TIM_CHANNEL_4, Speed);
-	//å·¦åè½®
+	//×óºóÂÖ
 	__HAL_TIM_SetCompare(&htim2, TIM_CHANNEL_2, 0);
 	__HAL_TIM_SetCompare(&htim2, TIM_CHANNEL_1, Speed);
-	//å³å‰è½®
+	//ÓÒÇ°ÂÖ
 	__HAL_TIM_SetCompare(&htim3, TIM_CHANNEL_3, 0);
 	__HAL_TIM_SetCompare(&htim3, TIM_CHANNEL_4, Speed);
-	//å³åè½®
+	//ÓÒºóÂÖ
 	__HAL_TIM_SetCompare(&htim3, TIM_CHANNEL_2, 0);
 	__HAL_TIM_SetCompare(&htim3, TIM_CHANNEL_1, Speed);
 }
 
 void Car_Left(uint8_t Speed)
 {
-	//å·¦å‰è½®
+	//×óÇ°ÂÖ
 	__HAL_TIM_SetCompare(&htim2, TIM_CHANNEL_3, 0);
 	__HAL_TIM_SetCompare(&htim2, TIM_CHANNEL_4, Speed);
-	//å·¦åè½®
+	//×óºóÂÖ
 	__HAL_TIM_SetCompare(&htim2, TIM_CHANNEL_2, 0);
 	__HAL_TIM_SetCompare(&htim2, TIM_CHANNEL_1, Speed);
-	//å³å‰è½®
+	//ÓÒÇ°ÂÖ
 	__HAL_TIM_SetCompare(&htim3, TIM_CHANNEL_3, Speed);
 	__HAL_TIM_SetCompare(&htim3, TIM_CHANNEL_4, 0);
-	//å³åè½®
+	//ÓÒºóÂÖ
 	__HAL_TIM_SetCompare(&htim3, TIM_CHANNEL_2, Speed);
 	__HAL_TIM_SetCompare(&htim3, TIM_CHANNEL_1, 0);
 }
 
 void Car_Light(uint8_t Speed)
 {
-	//å·¦å‰è½®
+	//×óÇ°ÂÖ
 	__HAL_TIM_SetCompare(&htim2, TIM_CHANNEL_3, Speed);
 	__HAL_TIM_SetCompare(&htim2, TIM_CHANNEL_4, 0);
-	//å·¦åè½®
+	//×óºóÂÖ
 	__HAL_TIM_SetCompare(&htim2, TIM_CHANNEL_2, Speed);
 	__HAL_TIM_SetCompare(&htim2, TIM_CHANNEL_1, 0);
-	//å³å‰è½®
+	//ÓÒÇ°ÂÖ
 	__HAL_TIM_SetCompare(&htim3, TIM_CHANNEL_3, 0);
 	__HAL_TIM_SetCompare(&htim3, TIM_CHANNEL_4, Speed);
-	//å³åè½®
+	//ÓÒºóÂÖ
 	__HAL_TIM_SetCompare(&htim3, TIM_CHANNEL_2, 0);
 	__HAL_TIM_SetCompare(&htim3, TIM_CHANNEL_1, Speed);
 }
