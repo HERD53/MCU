@@ -1,0 +1,27 @@
+--cpu Cortex-M3
+"boot_test\startup_stm32f103xb.o"
+"boot_test\bootloader.o"
+"boot_test\main.o"
+"boot_test\gpio.o"
+"boot_test\usart.o"
+"boot_test\stm32f1xx_it.o"
+"boot_test\stm32f1xx_hal_msp.o"
+"boot_test\stm32f1xx_hal_gpio_ex.o"
+"boot_test\stm32f1xx_hal_tim.o"
+"boot_test\stm32f1xx_hal_tim_ex.o"
+"boot_test\stm32f1xx_hal_uart.o"
+"boot_test\stm32f1xx_hal.o"
+"boot_test\stm32f1xx_hal_rcc.o"
+"boot_test\stm32f1xx_hal_rcc_ex.o"
+"boot_test\stm32f1xx_hal_gpio.o"
+"boot_test\stm32f1xx_hal_dma.o"
+"boot_test\stm32f1xx_hal_cortex.o"
+"boot_test\stm32f1xx_hal_pwr.o"
+"boot_test\stm32f1xx_hal_flash.o"
+"boot_test\stm32f1xx_hal_flash_ex.o"
+"boot_test\stm32f1xx_hal_exti.o"
+"boot_test\system_stm32f1xx.o"
+--strict --scatter "Boot_Test\Boot_Test.sct"
+--summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list "Boot_Test.map" -o Boot_Test\Boot_Test.axf
